@@ -265,14 +265,14 @@ header {
 /* --------------------------------------------------------------------
    ⑦ WORKS（作品のカード）
    -------------------------------------------------------------------- */
-.work-grid {
+.timeline-grid {
   display: grid;
   /* 【変更⑳】repeat(3, 1fr) を repeat(2, 1fr) にすると 2 列になる */
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
-.work-card {
+.timeline-card {
   background: #fff;
   border-radius: var(--radius);
   overflow: hidden;          /* 画像の角を丸く切り抜くために必要 */
@@ -283,24 +283,24 @@ header {
   color: inherit;
 }
 
-.work-card:hover {
+.timeline-card:hover {
   transform: translateY(-6px);   /* 【変更㉑】浮き上がる高さ */
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.11);
 }
 
-.work-card img {
+.timeline-card img {
   width: 100%;
   aspect-ratio: 4 / 3;       /* 画像の縦横比を統一。1/1 や 16/9 でもOK */
   object-fit: cover;
 }
 
-.work-body { padding: 18px 20px 24px; }
+.timeline-body { padding: 18px 20px 24px; }
 
-.work-body h3 { margin: 0 0 6px; font-size: 16px; color: var(--dark-color); }
+.timeline-body h3 { margin: 0 0 6px; font-size: 16px; color: var(--dark-color); }
 
-.work-body p { margin: 0; font-size: 13.5px; color: var(--sub-color); }
+.timeline-body p { margin: 0; font-size: 13.5px; color: var(--sub-color); }
 
-.work-tag {
+.timeline-tag {
   display: inline-block;
   background: var(--soft-color);
   color: var(--main-color);
@@ -450,8 +450,8 @@ footer {
     <!-- 【ここを変える⑤】メニュー。href="#about" は同じページの id へジャンプする印 -->
     <nav class="nav" id="nav">
       <a href="#about">About</a>
-      <a href="#works">Works</a>
       <a href="#skills">Skills</a>
+      <a href="#timeline">timeline</a>
       <a href="#contact">Contact</a>
     </nav>
 
@@ -483,7 +483,7 @@ footer {
       ハンズオン形式で手を動かしながら学ぶのが好きで、やりたいと思ったことがあればすぐに行動することを心がけています。
     </p>
 
-    <a class="btn" href="#works">つくったものを見る</a>
+    <a class="btn" href="#timeline">活動履歴を見る</a>
     <a class="btn btn-ghost" href="#contact" style="margin-left:6px">連絡する</a>
   </div>
 </div>
