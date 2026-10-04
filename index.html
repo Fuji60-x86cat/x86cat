@@ -6,7 +6,7 @@
      ▼ 作品を並べて見せる、個人のポートフォリオサイトです
      ▼ ファイルは index.html 1 枚 ＋ images フォルダだけ
      ▼ 【ここを変える】【変更】で検索（Ctrl + F / Cmd + F）すると、
-        いじれる場所が全部出てきます
+         いじれる場所が全部出てきます
      ▼ この灰色の説明文はコメントです。画面には出ません
 
      【ファイルの構造】全部おなじ場所に並べます（フォルダは作りません）
@@ -18,7 +18,7 @@
        ogp.jpg       ← SNS シェア用のサムネイル
 
        ※ フォルダを作らないのは、GitHub にアップロードするときに
-          「全部まとめて選んでドラッグ＆ドロップ」できるようにするためです
+         「全部まとめて選んでドラッグ＆ドロップ」できるようにするためです
 
      【中身の構造】4 つのエリアが 1 枚に同居しています
        1. head エリア   … タイトル・SNS 設定
@@ -183,7 +183,7 @@ header {
 .hero img {
   width: 148px;              /* 【変更⑮】プロフィール写真の大きさ */
   height: 148px;
-  border-radius: 50%;        /* 【変更⑯】50% で丸、0 で四角、20px で角丸 */
+  border-radius: 50%;        /* 【変更十六】50% で丸、0 で四角、20px で角丸 */
   object-fit: cover;
   margin: 0 auto 22px;
   border: 5px solid #fff;
@@ -433,6 +433,35 @@ footer {
   .nav.is-open { display: flex; }
   .nav a { padding: 12px 0; border-bottom: none; }
 }
+
+/* --------------------------------------------------------------------
+   ⑭ ダークモード時の文字色の補正
+   デザインは変えず、明るい背景の上にある白っぽい文字だけ黒にします
+   （data-theme="dark" のときだけ有効。ライトモードには影響しません）
+   -------------------------------------------------------------------- */
+[data-theme="dark"] .logo,
+[data-theme="dark"] .menu-btn,
+[data-theme="dark"] .nav a,
+[data-theme="dark"] .timeline-body h3,
+[data-theme="dark"] .skill-list li,
+[data-theme="dark"] footer {
+  color: #1f2b33;
+}
+[data-theme="dark"] .nav a:hover { color: var(--main-color); }
+
+/* ヒーローは背景が「暗い→白」のグラデーションなので、文字は黒にする */
+[data-theme="dark"] .hero h1,
+[data-theme="dark"] .hero .lead { color: #1f2b33; }
+[data-theme="dark"] .hero .roman { color: #3a4650; }
+
+/* セクションごとに背景色を変えて、境目をはっきりさせる（ダークモードのみ） */
+[data-theme="dark"] #about    { background: #1b1f24; }   /* 黒に近いグレー */
+[data-theme="dark"] #skills   { background: #2b3745; }   /* 青みのある明るめのグレー */
+[data-theme="dark"] #timeline { background: #14181c; }   /* いちばん濃い黒 */
+[data-theme="dark"] #contact  { background: #22342d; }   /* 緑みのあるダークグリーン */
+[data-theme="dark"] #skills,
+[data-theme="dark"] #timeline,
+[data-theme="dark"] #contact  { border-top: 1px solid rgba(255, 255, 255, 0.10); }
 </style>
 </head>
 
@@ -455,6 +484,7 @@ footer {
       <a href="#contact">Contact</a>
     </nav>
 
+    <button id="theme-btn" class="btn btn-ghost" aria-label="ダークモード切り替え" style="padding:6px 14px">🌙</button>
     <button class="menu-btn" id="menu-btn" aria-label="メニュー">☰</button>
   </div>
 </header>
@@ -475,7 +505,7 @@ footer {
     <h1>三上風侍朗</h1>
 
     <!-- 【ここを変える⑧】ローマ字表記。いらなければ行ごと消す -->
-    <p class="roman">FUJIRO MIkAMI</p>
+    <p class="roman">FUJIRO MIKAMI</p>
 
     <!-- 【ここを変える⑨】ひとこと自己紹介 -->
     <p class="lead">
@@ -539,7 +569,7 @@ footer {
 <!-- ====================================================================
      SKILLS（できること）
      ==================================================================== -->
-<section id="skills">
+<section id="skills" class="section-soft">
   <div class="container reveal">
     <p class="section-label">SKILLS</p>
     <h2 class="section-title">できること・勉強中のこと</h2>
@@ -575,7 +605,7 @@ footer {
 <!-- ====================================================================
      TIMELINE（活動履歴）
      ==================================================================== -->
-<section id="timeline" class="section-soft">
+<section id="timeline">
   <div class="container reveal">
     <p class="section-label">TIMELINE</p>
     <h2 class="section-title">活動履歴</h2>
@@ -586,17 +616,17 @@ footer {
     <p style="color: var(--main-color); font-weight: bold; margin-bottom: 5px;">インターン</p>
     <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
       <li>10/20: 株式会社NTTデータ先端技術様 インターンシップ（脆弱性診断）（予定）</li>
-      <li>9/9～9/11: エムオーテックス株式会社様 インターンシップ（脆弱性診断）</li>
-      <li>7/28～7/31: 三井物産セキュアディレクション株式会社様 インターンシップ（脆弱性診断）</li>
+      <li>9/9～9/11: エムオーテックス株式会社様 インターンシップ（セキュリティレッドコース）</li>
+      <li>7/28～7/31: 三井物産セキュアディレクション株式会社様 インターンシップ（診断エンジニアコース）</li>
       <li>株式会社ユービーセキュア様 1day仕事体験イベント 複数参加</li>
     </ul>
 
     <p style="color: var(--main-color); font-weight: bold; margin-bottom: 5px;">CTF/セキュリティキャンプ</p>
     <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
-      <li>11/9:CTFコンテスト Challenge 2026　~katagaitai による初心者向けCTFコンテスト~(予定）</li>
+      <li>11/9:CTFコンテスト Challenge 2026 ~katagaitai による初心者向けCTFコンテスト~(予定）</li>
       <li>第11回セキュリティコンテスト MBSD Cybersecurity Challenges 2026</li>
-      <li>10/9～10/12: FFRI × NFLabs. Cybersecurity Challenge 2026 参加予定（予定）</li>
-      <li>10/3: 総務省主催全国型CTF（東京会場） （予定）</li>
+      <li>10/9～10/12: FFRI × NFLabs. Cybersecurity Challenge 2026 参加予定</li>
+      <li>10/3: 総務省主催全国型CTF（東京会場）</li>
       <li>9/26～9/27: セキュリティ・キャンプ2026ミニ（山梨開催）</li>
       <li>9/12: セキュリティ・キャンプ2026ミニ（愛知開催）</li>
       <li>9/6: SECCON Beginners Workshop 【大阪】</li>
@@ -651,12 +681,12 @@ footer {
 <!-- ====================================================================
      CONTACT（連絡先）
      ==================================================================== -->
-<section id="contact" class="contact">
+<section id="contact" class="contact section-soft">
   <div class="container reveal">
     <p class="section-label">CONTACT</p>
     <h2 class="section-title">連絡先</h2>
 
-    <!-- 【ここを変える⑯】案内文 -->
+    <!-- 【ここを変える十六】案内文 -->
     <p>ご相談、一緒に何か挑戦したい方、感想でも大歓迎です。<br />以下のアカウントにお気軽にご連絡ください。</p>
 
     <!-- 【ここを変える⑰】メールアドレス。mailto: の後ろを自分のアドレスに -->
@@ -745,28 +775,27 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 document.getElementById("year").textContent = new Date().getFullYear();
 
 
-/* ====================================================================
-   ▼ おまけ：やってみたい人向けの改造ネタ
-   行の先頭の // を消すと動きます
-   ==================================================================== */
+
 
 // 【改造ネタ 1】下にスクロールするとヘッダーに影を付ける
-// window.addEventListener("scroll", () => {
-//   const h = document.querySelector("header");
-//   h.style.boxShadow = window.scrollY > 10 ? "0 2px 14px rgba(0,0,0,.07)" : "none";
-// });
+ window.addEventListener("scroll", () => {
+  const h = document.querySelector("header");
+  h.style.boxShadow = window.scrollY > 10 ? "0 2px 14px rgba(0,0,0,.07)" : "none";
+});
 
 // 【改造ネタ 2】ダークモードに切り替える
-//   まず body エリアのメニューに次のボタンを足す：
-//   <button id="theme-btn" class="btn btn-ghost">🌙</button>
-// document.getElementById("theme-btn").addEventListener("click", () => {
-//   const r = document.documentElement;
-//   const dark = r.style.getPropertyValue("--bg-color") === "#1b1f24";
-//   r.style.setProperty("--bg-color",   dark ? "#fbfcfc" : "#1b1f24");
-//   r.style.setProperty("--soft-color", dark ? "#f1f7f7" : "#242a31");
-//   r.style.setProperty("--text-color", dark ? "#333c42" : "#e8edf0");
-//   r.style.setProperty("--dark-color", dark ? "#1f2b33" : "#f5f8fa");
-// });
+// 色の変更は前と同じ。html に data-theme="dark" も付けて、
+// 白い背景の上の文字だけ黒にする（style エリアの ⑭）
+document.getElementById("theme-btn").addEventListener("click", () => {
+  const r = document.documentElement;
+  const dark = r.style.getPropertyValue("--bg-color") === "#1b1f24";
+  r.style.setProperty("--bg-color",   dark ? "#fbfcfc" : "#1b1f24");
+  r.style.setProperty("--soft-color", dark ? "#f1f7f7" : "#242a31");
+  r.style.setProperty("--text-color", dark ? "#333c42" : "#e8edf0");
+  r.style.setProperty("--dark-color", dark ? "#1f2b33" : "#f5f8fa");
+  if (dark) { r.removeAttribute("data-theme"); }
+  else      { r.setAttribute("data-theme", "dark"); }
+});
 </script>
 
 </body>
