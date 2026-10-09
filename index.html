@@ -436,8 +436,6 @@ footer {
 
 /* --------------------------------------------------------------------
    ⑭ ダークモード時の文字色の補正
-   デザインは変えず、明るい背景の上にある白っぽい文字だけ黒にします
-   （data-theme="dark" のときだけ有効。ライトモードには影響しません）
    -------------------------------------------------------------------- */
 [data-theme="dark"] .logo,
 [data-theme="dark"] .menu-btn,
@@ -449,12 +447,10 @@ footer {
 }
 [data-theme="dark"] .nav a:hover { color: var(--main-color); }
 
-/* ヒーローは背景が「暗い→白」のグラデーションなので、文字は黒にする */
 [data-theme="dark"] .hero h1,
 [data-theme="dark"] .hero .lead { color: #1f2b33; }
 [data-theme="dark"] .hero .roman { color: #3a4650; }
 
-/* セクションごとに背景色を変えて、境目をはっきりさせる（ダークモードのみ） */
 [data-theme="dark"] #about    { background: #1b1f24; }   /* 黒に近いグレー */
 [data-theme="dark"] #skills   { background: #2b3745; }   /* 青みのある明るめのグレー */
 [data-theme="dark"] #timeline { background: #14181c; }   /* いちばん濃い黒 */
@@ -473,14 +469,13 @@ footer {
      ==================================================================== -->
 <header>
   <div class="header-inner">
-    <!-- 【ここを変える④】左上に出る自分の名前 -->
     <a class="logo" href="#top">三上風侍朗</a>
-
-    <!-- 【ここを変える⑤】メニュー。href="#about" は同じページの id へジャンプする印 -->
+    
+    <!-- メニューの並び順も本文に合わせて変更しました -->
     <nav class="nav" id="nav">
+      <a href="#timeline">Timeline</a>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
-      <a href="#timeline">timeline</a>
       <a href="#contact">Contact</a>
     </nav>
 
@@ -495,115 +490,21 @@ footer {
      ==================================================================== -->
 <div class="hero" id="top">
   <div class="container">
-    <!-- 【ここを変える⑥】プロフィール写真
-         index.html と同じ場所にある profile.jpg を、
-         自分の画像で「同じ名前のまま」上書きするだけで差し替わります
-         （HTML はさわらなくて OK） -->
     <img src="icon.png" alt="プロフィール写真" />
-
-    <!-- 【ここを変える⑦】名前 -->
     <h1>三上風侍朗</h1>
-
-    <!-- 【ここを変える⑧】ローマ字表記。いらなければ行ごと消す -->
     <p class="roman">FUJIRO MIKAMI</p>
-
-    <!-- 【ここを変える⑨】ひとこと自己紹介 -->
     <p class="lead">
       日本工業大学 先進工学部 情報メディア工学科所属 ３年<br />
      趣味でサイバーセキュリティを学んでいます。<br/>
          脆弱性診断士・ペンテスター志望
     </p>
-
     <a class="btn" href="#timeline">活動履歴を見る</a>
     <a class="btn btn-ghost" href="#contact" style="margin-left:6px">連絡する</a>
   </div>
 </div>
 
-
 <!-- ====================================================================
-     ABOUT（自己紹介 + プロフィール項目）
-     ==================================================================== -->
-<section id="about">
-  <div class="container reveal">
-    <p class="section-label">ABOUT</p>
-    <h2 class="section-title">わたしについて</h2>
-
-    <div class="about-grid">
-      <div>
-        <!-- 【ここを変える⑩】自己紹介の本文。段落を増やすときは <p>…</p> を足す -->
-        <p>
-          はじめまして。学部3年の大学生です。
-          大学に入学してからITの勉強を始めました。現在は趣味の一環としてCTFや脆弱なアプリ開発などに取り組んでいます。
-        </p>
-        <p>
-          
-          大学在学中の活動内容についてこのサイトにまとめています。気になるものがあればぜひ見てください。
-        </p>
-      </div>
-
-      <!-- 【ここを変える⑪】プロフィール項目。行を増やすときは <li>…</li> をコピー -->
-      <ul class="profile-list">
-        <li><span class="key">所属</span><span>日本工業大学 先進工学部 情報メディア工学科</span></li>
-        <li><span class="key">拠点</span><span>千葉県</span></li>
-        <li><span class="key">興味</span><span>アプリ開発・CTF・アプリセキュリティ（Web/モバイル）・低レイヤ領域全般</span></li>
-        <li><span class="key">趣味</span><span>CTF・将棋・ランニング・ブログ執筆・旅行・読書</span></li>
-        <li><span class="key">目標</span><span>
-             <p>・セキュリティキャンプやテックカンファレンスに登壇して自身が学んでいる技術（主にセキュリティ）について講演すること。</p>
-             <p>・セキュリティに関する資格（情報処理安全確保支援士・BSCP・eJPTv2・eWPT)を取得すること。</p>
-             <p>・学内でセキュリティに関する勉強会を定期的に開催すること。</p>
-             <p>・脆弱性診断士やペンテスターとして攻撃者視点のセキュリティ技術を磨いた後にフォレンジックやインシデントレスポンスの業務に携わること。</p>
-        </span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-
-<!-- ====================================================================
-     WORKS（つくったもの）
-     カードを増やすときは <a class="work-card"> … </a> をまるごとコピー
-     ==================================================================== -->
-
-
-
-<!-- ====================================================================
-     SKILLS（できること）
-     ==================================================================== -->
-<section id="skills" class="section-soft">
-  <div class="container reveal">
-    <p class="section-label">SKILLS</p>
-    <h2 class="section-title">できること・勉強中のこと</h2>
-
-    <!-- 【ここを変える⑬】タグ。行をコピーすれば増やせる -->
-    <ul class="skill-list">
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>JavaScript</li>      
-      <li>PHP</li>
-      <li>SQL</li>
-      <li>C言語</li>
-      <li>C++</li>
-      <li>Java</li>
-      <li>Python</li>
-      <li>Git / GitHub</li>
-      <li>Linux</li>
-      <li>Laravel(学習中）</li>
-    </ul>
-
-    <!-- 【ここを変える⑭】補足の一文 -->
-    <p class="skill-note">
-      <p>現在はWebアプリケーション開発やTry Hack Me、Web Security Academy、徳丸本</p>
-     <p>などの書籍を使ってWebセキュリティに関する学習をしています。</p>
-    </p>
-  </div>
-</section>
-
-
-<!-- ====================================================================
-     TIMELINE（これまでのこと）
-     ==================================================================== -->
-<!-- ====================================================================
-     TIMELINE（活動履歴）
+     TIMELINE（活動履歴） ★ここを一番上に移動しました
      ==================================================================== -->
 <style>
   /* リンクの基本設定（他の文字と同じ色にし、下線を消す） */
@@ -629,7 +530,7 @@ footer {
     <!-- 2026年 -->
     <h3 style="color: var(--dark-color); border-bottom: 1px solid #ccd; padding-bottom: 5px; margin-bottom: 15px; margin-top: 30px;">2026年（大学３年）</h3>
     
- <!-- インターン -->
+    <!-- インターン -->
     <p style="color: var(--main-color); font-weight: bold; margin-bottom: 5px;">インターン</p>
     <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
       <li>10/20: 株式会社NTTデータ先端技術様 インターンシップ（脆弱性診断）（予定）</li>
@@ -637,9 +538,8 @@ footer {
       <li><a href="https://public.n-ats.hrmos.co/hr-mbsd/pages/2233494291461885952" class="hover-link" target="_blank" rel="noopener noreferrer">7/28～7/31: 三井物産セキュアディレクション株式会社様 インターンシップ（診断エンジニアコース）</a></li>
       <li>株式会社ユービーセキュア様 1day仕事体験イベント 複数参加</li>
     </ul>
-     
 
-    <!-- CTF/セキュリティキャンプ（リンクあり・ホバーイベントあり） -->
+    <!-- CTF/セキュリティキャンプ -->
     <p style="color: var(--main-color); font-weight: bold; margin-bottom: 5px;">CTF/セキュリティキャンプ</p>
     <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
       <li><a href="リンク先のURL" class="hover-link" target="_blank" rel="noopener noreferrer">11/9:CTFコンテスト Challenge 2026 ~katagaitai による初心者向けCTFコンテスト~(予定）</a></li>
@@ -651,7 +551,7 @@ footer {
       <li><a href="https://x.com/YamadaTaromlok/status/2096800944742957396" class="hover-link" target="_blank" rel="noopener noreferrer">9/6: SECCON Beginners Workshop 【大阪】</a></li>
     </ul>
 
-    <!-- イベント・勉強会など（リンクあり・ホバーイベントあり） -->
+    <!-- イベント・勉強会など -->
     <p style="color: var(--main-color); font-weight: bold; margin-bottom: 5px;">イベント・勉強会など</p>
     <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
       <li><a href="リンク先のURL" class="hover-link" target="_blank" rel="noopener noreferrer">10/24:【未経験者にオススメ!】月一ハッキング体験会 #2026/10</a></li>
@@ -666,152 +566,4 @@ footer {
       <li><a href="https://x.com/YamadaTaromlok/status/2093604414900813987" class="hover-link" target="_blank" rel="noopener noreferrer">8/28: 第59回 MBSD セキュリティ勉強会</a></li>
       <li><a href="https://x.com/YamadaTaromlok/status/2091440678807163147" class="hover-link" target="_blank" rel="noopener noreferrer">8/23: 第2回 よわよわセキュリティ勉強会</a></li>
       <li><a href="https://x.com/YamadaTaromlok/status/2091077107753558402" class="hover-link" target="_blank" rel="noopener noreferrer">8/22: 技育プロジェクト ミニカンファレンス</a></li>
-      <li><a href="https://mbsd-ws.doorkeeper.jp/events/197828" class="hover-link" target="_blank" rel="noopener noreferrer">7/14: 第58回 MBSD セキュリティ勉強会</a></li>
-    </ul>
-
-    <p style="color: var(--main-color); font-weight: bold; margin-bottom: 5px;">資格</p>
-    <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
-      <li>情報セキュリティマネジメント試験 合格</li>
-    </ul>
-
-    <!-- 2025年 -->
-    <h3 style="color: var(--dark-color); border-bottom: 1px solid #ccd; padding-bottom: 5px; margin-bottom: 15px; margin-top: 30px;">2025年（大学２年）</h3>
-    <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
-      <li>それ以降ブログ（note）を書いたり読書したりしていました。</li>
-      <li>英検準１級受験（不合格）</li>
-      <li>基本情報技術者試験受験（不合格）</li>
-      <li>ドイツ語検定3級受験（不合格）</li>
-      <li>情報セキュリティマネジメント試験（不合格）</li>
-      <li>ダイソーでアルバイト(12月まで）</li>
-    </ul>
-
-    <!-- 2024年 -->
-    <h3 style="color: var(--dark-color); border-bottom: 1px solid #ccd; padding-bottom: 5px; margin-bottom: 15px; margin-top: 30px;">2024年（大学１年）</h3>
-    <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
-      <li>TOEIC IP試験 550点</li>
-      <li>ＩＴパスポート試験 合格</li>
-      <li>ドイツ語検定５級 合格</li>
-      <li>英検２級合格</li>
-      <li>英検準２級合格</li>
-      <li>ダイソーでアルバイト</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ====================================================================
-     CONTACT（連絡先）
-     ==================================================================== -->
-<section id="contact" class="contact section-soft">
-  <div class="container reveal">
-    <p class="section-label">CONTACT</p>
-    <h2 class="section-title">連絡先</h2>
-
-    <p>ご相談、一緒に何か挑戦したい方、感想でも大歓迎です。<br />以下のアカウントにお気軽にご連絡ください。</p>
-
-    <div class="sns-links">
-      <a href="https://x.com/YamadaTaromlok" target="_blank" rel="noopener">X (Twitter)←活動を投稿しています。</a>
-      <a href="https://note.com/limber_auklet93" target="_blank" rel="noopener">note←技術ブログとかをこちらで投稿しています。</a>
-      <a href="https://github.com/Fuji60-x86cat" target="_blank" rel="noopener">GitHub←作成したプログラム等をこちらで公開しています。</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ====================================================================
-     フッター
-     ==================================================================== -->
-<footer>
-  <!-- 【ここを変える⑲】フッターの名前。年は JavaScript が自動で入れます -->
-  <p>&copy; <span id="year"></span> 三上風侍朗</p>
-</footer>
-
-
-<script>
-/* ====================================================================
-   ここから下が「動き」の設定（JavaScript）です
-   ==================================================================== */
-
-
-// --------------------------------------------------------------------
-// ① スマホのメニュー開閉
-// ボタンが押されたら、メニューに is-open という目印を付け外しする
-// --------------------------------------------------------------------
-const menuBtn = document.getElementById("menu-btn");
-const nav = document.getElementById("nav");
-
-menuBtn.addEventListener("click", () => {
-  nav.classList.toggle("is-open");
-});
-
-// メニューの項目を押したら、メニューを閉じる
-nav.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => nav.classList.remove("is-open"));
-});
-
-
-// --------------------------------------------------------------------
-// ② スクロールでふわっと表示する
-// 画面に入ってきた .reveal に is-visible という目印を付けています
-// 【変更㉒】演出をやめたいときは、style エリアの .reveal を消せば OK
-// --------------------------------------------------------------------
-const revealItems = document.querySelectorAll(".reveal");
-
-function checkReveal() {
-  revealItems.forEach((el) => {
-    // 要素の上端が画面の下から 90% の位置まで来たら表示する
-    // 【変更㉓】0.9 を 0.7 にすると、もっと下までスクロールしてから出てくる
-    if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
-      el.classList.add("is-visible");
-    }
-  });
-}
-
-checkReveal();                                  // 最初に 1 回チェック
-window.addEventListener("scroll", checkReveal); // スクロールのたびにチェック
-window.addEventListener("resize", checkReveal);
-
-
-// --------------------------------------------------------------------
-// ③ メニューを押したときになめらかにスクロールする
-// --------------------------------------------------------------------
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener("click", (e) => {
-    const target = document.querySelector(link.getAttribute("href"));
-    if (!target) return;
-    e.preventDefault();
-    target.scrollIntoView({ behavior: "smooth" });
-  });
-});
-
-
-// --------------------------------------------------------------------
-// ④ フッターの年を自動で入れる（毎年書き換えなくて済む）
-// --------------------------------------------------------------------
-document.getElementById("year").textContent = new Date().getFullYear();
-
-
-
-
-// 【改造ネタ 1】下にスクロールするとヘッダーに影を付ける
- window.addEventListener("scroll", () => {
-  const h = document.querySelector("header");
-  h.style.boxShadow = window.scrollY > 10 ? "0 2px 14px rgba(0,0,0,.07)" : "none";
-});
-
-// 【改造ネタ 2】ダークモードに切り替える
-// 色の変更は前と同じ。html に data-theme="dark" も付けて、
-// 白い背景の上の文字だけ黒にする（style エリアの ⑭）
-document.getElementById("theme-btn").addEventListener("click", () => {
-  const r = document.documentElement;
-  const dark = r.style.getPropertyValue("--bg-color") === "#1b1f24";
-  r.style.setProperty("--bg-color",   dark ? "#fbfcfc" : "#1b1f24");
-  r.style.setProperty("--soft-color", dark ? "#f1f7f7" : "#242a31");
-  r.style.setProperty("--text-color", dark ? "#333c42" : "#e8edf0");
-  r.style.setProperty("--dark-color", dark ? "#1f2b33" : "#f5f8fa");
-  if (dark) { r.removeAttribute("data-theme"); }
-  else      { r.setAttribute("data-theme", "dark"); }
-});
-</script>
-
-</body>
-</html>
+      <li><a href="https://mbsd-ws.doorkeeper.jp/events/197828" class="hover-link" target
