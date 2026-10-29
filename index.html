@@ -1,30 +1,25 @@
 <!DOCTYPE html>
 <!-- ====================================================================
      技育プロジェクト ミニカンファレンス 2026.08
-     ポートフォリオ テンプレート（index.html）
+     ポートフォリオ（index.html）
 
-     ▼ 作品を並べて見せる、個人のポートフォリオサイトです
-     ▼ ファイルは index.html 1 枚 ＋ images フォルダだけ
      ▼ 【ここを変える】【変更】で検索（Ctrl + F / Cmd + F）すると、
          いじれる場所が全部出てきます
      ▼ この灰色の説明文はコメントです。画面には出ません
 
      【ファイルの構造】全部おなじ場所に並べます（フォルダは作りません）
-       index.html    ← このファイル
+       index.html    ← このファイル（中身 HTML ＋ 動き JavaScript）
+       style.css     ← 見た目（CSS）
        profile.jpg   ← プロフィール写真
-       work1.jpg     ← 作品 1 の画像
-       work2.jpg     ← 作品 2 の画像
-       work3.jpg     ← 作品 3 の画像
+       hero.jpg      ← トップの背景画像（無くてもOK）
        ogp.jpg       ← SNS シェア用のサムネイル
 
-       ※ フォルダを作らないのは、GitHub にアップロードするときに
-         「全部まとめて選んでドラッグ＆ドロップ」できるようにするためです
-
-     【中身の構造】4 つのエリアが 1 枚に同居しています
-       1. head エリア   … タイトル・SNS 設定
-       2. style エリア  … 見た目（CSS）
-       3. body エリア   … 中身（HTML）
-       4. script エリア … 動き（JavaScript）
+     【多言語（日本語 / English / Русский）のしくみ】
+       ・HTML に書いてある日本語がそのまま「日本語版」です
+       ・data-i18n="キー名" が付いた場所だけが、言語ボタンで切り替わります
+       ・英語・ロシア語の文章は、いちばん下の <script> の translations にあります
+       ・文章を増やすとき：HTML に data-i18n="新しいキー" を付け、
+         translations の en と ru に同じキーで訳文を足します
      ==================================================================== -->
 <html lang="ja">
 <head>
@@ -39,426 +34,15 @@
 
   <!-- 【ここを変える③】SNS でシェアしたときのサムネイル（OGP）
        og:image は公開後に「https://自分のURL/ogp.jpg」のような
-       完全なアドレスに書き換えます（セッション③） -->
+       完全なアドレスに書き換えます -->
   <meta property="og:title" content="三上風侍朗 | ポートフォリオ" />
   <meta property="og:description" content="自己紹介、スキル、活動履歴。" />
   <meta property="og:image" content="ogp.jpg" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-
-<style>
-/* ====================================================================
-   ここから下が「見た目」の設定（CSS）です
-   ==================================================================== */
-
-
-/* --------------------------------------------------------------------
-   ① テーマ設定（まずはここだけ変えてみる）
-   この 1 か所を変えるだけで、サイト全体の雰囲気が変わります
-   -------------------------------------------------------------------- */
-:root {
-  --main-color: #1ee345;   /* 【変更①】メインの色（見出し・ボタン）例) #6c5ce7 #e8590c */
-  --dark-color: #1f2b33;   /* 【変更②】濃い色（見出し文字・フッター） */
-  --text-color: #333c42;   /* 【変更③】本文の文字色 */
-  --sub-color:  #7b8794;   /* 【変更④】補助テキストの色 */
-  --bg-color:   #fbfcfc;   /* 【変更⑤】背景の色 */
-  --soft-color: #f1f7f7;   /* 【変更⑥】薄い背景（セクションの色替え） */
-
-  --radius: 14px;          /* 【変更⑦】角の丸み。0 で四角 */
-  --max-width: 940px;      /* 【変更⑧】コンテンツの最大幅 */
-}
-
-
-/* --------------------------------------------------------------------
-   ② 全体のベース
-   -------------------------------------------------------------------- */
-* { box-sizing: border-box; }
-
-body {
-  /* 【変更⑨】フォント。serif で明朝になる */
-  font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
-  color: var(--text-color);
-  background: var(--bg-color);
-  line-height: 1.9;
-  margin: 0;
-}
-
-img { max-width: 100%; display: block; }
-
-a { color: var(--main-color); }
-
-/* 中身を中央に寄せる共通の枠 */
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-section { padding: 84px 0; }        /* 【変更⑩】セクションの上下の余白 */
-.section-soft { background: var(--soft-color); }
-
-.section-label {
-  color: var(--main-color);
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 0.2em;    /* 【変更⑪】英字の字間 */
-  margin: 0 0 6px;
-}
-
-.section-title {
-  font-size: 27px;          /* 【変更⑫】セクション見出しの文字サイズ */
-  color: var(--dark-color);
-  margin: 0 0 36px;
-  line-height: 1.5;
-}
-
-
-/* --------------------------------------------------------------------
-   ③ ヘッダー（上に固定されるメニュー）
-   -------------------------------------------------------------------- */
-header {
-  position: sticky;          /* 【変更⑬】static にすると固定されなくなる */
-  top: 0;
-  z-index: 100;
-  background: rgba(251, 252, 252, 0.9);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid #e9eef0;
-}
-
-.header-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 13px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  font-size: 17px;
-  font-weight: bold;
-  color: var(--dark-color);
-  text-decoration: none;
-  letter-spacing: 0.04em;
-}
-
-.nav { display: flex; gap: 24px; }
-
-.nav a {
-  color: var(--text-color);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 4px 0;
-  border-bottom: 2px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
-}
-
-.nav a:hover { color: var(--main-color); border-color: var(--main-color); }
-
-.menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
-  color: var(--dark-color);
-}
-
-
-/* --------------------------------------------------------------------
-   ④ ヒーロー（トップの自己紹介）
-   写真ではなく、やわらかい色の背景にしています
-   -------------------------------------------------------------------- */
-.hero {
-  /* 【変更⑭】背景のグラデーション。2 色を変えると印象が大きく変わる
-     写真にしたい場合はこの 1 行を次のように書き換える：
-     background: url("hero.jpg") center/cover; */
-  background: linear-gradient(160deg, var(--soft-color) 0%, #ffffff 70%);
-  padding: 76px 0 68px;
-  text-align: center;
-}
-
-.hero img {
-  width: 148px;              /* 【変更⑮】プロフィール写真の大きさ */
-  height: 148px;
-  border-radius: 50%;        /* 【変更十六】50% で丸、0 で四角、20px で角丸 */
-  object-fit: cover;
-  margin: 0 auto 22px;
-  border: 5px solid #fff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.09);
-}
-
-.hero h1 {
-  font-size: 34px;           /* 【変更⑰】名前の大きさ */
-  color: var(--dark-color);
-  margin: 0 0 6px;
-  line-height: 1.4;
-}
-
-.hero .roman {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  color: var(--sub-color);
-  margin: 0 0 18px;
-}
-
-.hero .lead {
-  font-size: 16px;
-  max-width: 560px;
-  margin: 0 auto 30px;
-  color: var(--text-color);
-}
-
-
-/* --------------------------------------------------------------------
-   ⑤ ボタン
-   -------------------------------------------------------------------- */
-.btn {
-  display: inline-block;
-  background: var(--main-color);
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 14px;
-  padding: 12px 30px;
-  border-radius: 999px;      /* 【変更⑱】999px でカプセル型、4px で角ばった形 */
-  transition: transform 0.2s, opacity 0.2s;
-}
-
-.btn:hover { transform: translateY(-3px); opacity: 0.9; }
-
-.btn-ghost {
-  background: transparent;
-  color: var(--main-color);
-  border: 1.5px solid var(--main-color);
-}
-
-
-/* --------------------------------------------------------------------
-   ⑥ ABOUT（自己紹介の文章 + プロフィール項目）
-   -------------------------------------------------------------------- */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;   /* 【変更⑲】1fr 1fr にすると半々になる */
-  gap: 44px;
-}
-
-.profile-list { list-style: none; padding: 0; margin: 0; }
-
-.profile-list li {
-  display: flex;
-  gap: 14px;
-  padding: 10px 0;
-  border-bottom: 1px dashed #dde5e8;
-  font-size: 14px;
-}
-
-.profile-list .key {
-  color: var(--main-color);
-  font-weight: bold;
-  min-width: 74px;
-}
-
-
-/* --------------------------------------------------------------------
-   ⑦ WORKS（作品のカード）
-   -------------------------------------------------------------------- */
-.timeline-grid {
-  display: grid;
-  /* 【変更⑳】repeat(3, 1fr) を repeat(2, 1fr) にすると 2 列になる */
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.timeline-card {
-  background: #fff;
-  border-radius: var(--radius);
-  overflow: hidden;          /* 画像の角を丸く切り抜くために必要 */
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
-  transition: transform 0.25s, box-shadow 0.25s;
-  display: block;
-  text-decoration: none;
-  color: inherit;
-}
-
-.timeline-card:hover {
-  transform: translateY(-6px);   /* 【変更㉑】浮き上がる高さ */
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.11);
-}
-
-.timeline-card img {
-  width: 100%;
-  aspect-ratio: 4 / 3;       /* 画像の縦横比を統一。1/1 や 16/9 でもOK */
-  object-fit: cover;
-}
-
-.timeline-body { padding: 18px 20px 24px; }
-
-.timeline-body h3 { margin: 0 0 6px; font-size: 16px; color: var(--dark-color); }
-
-.timeline-body p { margin: 0; font-size: 13.5px; color: var(--sub-color); }
-
-.timeline-tag {
-  display: inline-block;
-  background: var(--soft-color);
-  color: var(--main-color);
-  font-size: 11.5px;
-  font-weight: bold;
-  padding: 2px 12px;
-  border-radius: 999px;
-  margin-bottom: 8px;
-}
-
-
-/* --------------------------------------------------------------------
-   ⑧ SKILLS（できること）
-   -------------------------------------------------------------------- */
-.skill-list {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 0;
-  margin: 0 0 26px;
-}
-
-.skill-list li {
-  background: #fff;
-  border: 1px solid #e2eaec;
-  border-radius: 999px;
-  padding: 6px 18px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.skill-note { font-size: 14px; color: var(--sub-color); margin: 0; }
-
-
-/* --------------------------------------------------------------------
-   ⑨ TIMELINE（これまでのこと）
-   -------------------------------------------------------------------- */
-.timeline { list-style: none; padding: 0; margin: 0; }
-
-.timeline li {
-  display: flex;
-  gap: 22px;
-  padding: 14px 4px;
-  border-bottom: 1px solid #e9eef0;
-}
-
-.timeline .year {
-  color: var(--main-color);
-  font-weight: bold;
-  font-size: 14px;
-  min-width: 84px;
-}
-
-.timeline .event { font-size: 15px; }
-
-
-/* --------------------------------------------------------------------
-   ⑩ CONTACT
-   -------------------------------------------------------------------- */
-.contact { text-align: center; }
-
-.contact p { max-width: 540px; margin: 0 auto 26px; color: var(--sub-color); }
-
-.sns-links { display: flex; gap: 12px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
-
-.sns-links a {
-  color: var(--main-color);
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 13.5px;
-  border: 1px solid var(--main-color);
-  border-radius: 999px;
-  padding: 7px 18px;
-  transition: background 0.2s, color 0.2s;
-}
-
-.sns-links a:hover { background: var(--main-color); color: #fff; }
-
-
-/* --------------------------------------------------------------------
-   ⑪ フッター
-   -------------------------------------------------------------------- */
-footer {
-  background: var(--dark-color);
-  color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  padding: 34px 24px;
-  font-size: 13px;
-}
-
-
-/* --------------------------------------------------------------------
-   ⑫ スクロールでふわっと出てくる演出
-   -------------------------------------------------------------------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.7s, transform 0.7s;
-}
-
-.reveal.is-visible { opacity: 1; transform: none; }
-
-
-/* --------------------------------------------------------------------
-   ⑬ スマホ用の調整（横幅 820px 以下）
-   -------------------------------------------------------------------- */
-@media (max-width: 820px) {
-  section { padding: 58px 0; }
-  .hero { padding: 54px 0 48px; }
-  .hero h1 { font-size: 27px; }
-  .section-title { font-size: 22px; }
-  .about-grid { grid-template-columns: 1fr; gap: 30px; }
-  .work-grid { grid-template-columns: 1fr; }
-  .menu-btn { display: block; }
-
-  /* スマホではメニューを隠し、ボタンを押すと出てくる */
-  .nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #fff;
-    flex-direction: column;
-    gap: 0;
-    padding: 8px 24px 18px;
-    border-bottom: 1px solid #e9eef0;
-  }
-  .nav.is-open { display: flex; }
-  .nav a { padding: 12px 0; border-bottom: none; }
-}
-
-/* --------------------------------------------------------------------
-   ⑭ ダークモード時の文字色の補正
-   -------------------------------------------------------------------- */
-[data-theme="dark"] .logo,
-[data-theme="dark"] .menu-btn,
-[data-theme="dark"] .nav a,
-[data-theme="dark"] .timeline-body h3,
-[data-theme="dark"] .skill-list li,
-[data-theme="dark"] footer {
-  color: #1f2b33;
-}
-[data-theme="dark"] .nav a:hover { color: var(--main-color); }
-
-[data-theme="dark"] .hero h1,
-[data-theme="dark"] .hero .lead { color: #1f2b33; }
-[data-theme="dark"] .hero .roman { color: #3a4650; }
-
-[data-theme="dark"] #about    { background: #1b1f24; }   /* 黒に近いグレー */
-[data-theme="dark"] #skills   { background: #2b3745; }   /* 青みのある明るめのグレー */
-[data-theme="dark"] #timeline { background: #14181c; }   /* いちばん濃い黒 */
-[data-theme="dark"] #contact  { background: #22342d; }   /* 緑みのあるダークグリーン */
-[data-theme="dark"] #skills,
-[data-theme="dark"] #timeline,
-[data-theme="dark"] #contact  { border-top: 1px solid rgba(255, 255, 255, 0.10); }
-</style>
+  <!-- 見た目（CSS）は style.css に分けました -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 
@@ -469,17 +53,22 @@ footer {
      ==================================================================== -->
 <header>
   <div class="header-inner">
-    <a class="logo" href="#top">三上風侍朗</a>
-    
-    <!-- メニューの並び順も本文に合わせて変更しました -->
+    <a class="logo" href="#top" data-i18n="name">三上風侍朗</a>
+
     <nav class="nav" id="nav">
-      <a href="#timeline">Timeline</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#skills" data-i18n="nav_skills">Skills</a>
+      <a href="#timeline" data-i18n="nav_timeline">Timeline</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
     </nav>
 
-    <button id="theme-btn" class="btn btn-ghost" aria-label="ダークモード切り替え" style="padding:6px 14px">ダークモード</button>
+    <!-- 言語切り替えボタン -->
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" class="lang-btn is-active" data-lang="ja">日本語</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="ru">RU</button>
+    </div>
+
     <button class="menu-btn" id="menu-btn" aria-label="メニュー">☰</button>
   </div>
 </header>
@@ -490,155 +79,43 @@ footer {
      ==================================================================== -->
 <div class="hero" id="top">
   <div class="container">
-    <img src="icon.png" alt="プロフィール写真" />
-    <h1>三上風侍朗</h1>
+    <img src="profile.jpg" alt="プロフィール写真" />
+    <h1 data-i18n="name">三上風侍朗</h1>
     <p class="roman">FUJIRO MIKAMI</p>
-    <p class="lead" style="margin-bottom: 20px;">
-      日本工業大学 先進工学部 情報メディア工学科所属 ３年<br />
-     趣味でサイバーセキュリティを学んでいます。<br/>
-         脆弱性診断士・ペンテスター志望
+    <p class="lead" data-i18n="hero_affil">日本工業大学 先進工学部 情報メディア工学科所属 ３年</p>
+
+    <p class="qual">
+      <span class="qual-label" data-i18n="qual_label">保有資格</span>
+      <span class="qual-line" data-i18n="qual_line1">実用数学技能検定3級 / 実用英語技能検定準2級 / 実用英語技能検定2級 / ドイツ語検定5級</span>
+      <span class="qual-line" data-i18n="qual_line2">ITパスポート試験 / TOEIC IP 550点 / 情報セキュリティマネジメント試験</span>
     </p>
 
-    <!-- ★ 保有資格の記述欄を追加 -->
-    <p style="margin: 0 auto 30px; max-width: 600px; font-size: 14px; line-height: 1.8;">
-      <span style="color: var(--main-color); font-weight: bold; font-size: 13px; letter-spacing: 0.1em;">保有資格</span><br />
-      <span style="color: var(--text-color);">
-        実用数学技能検定3級 / 実用英語技能検定準2級 / 実用英語技能検定2級 / ドイツ語検定5級<br />
-        ITパスポート試験 / TOEIC IP 550点 / 情報セキュリティマネジメント試験
-      </span>
-    </p>
-
-    <a class="btn" href="#timeline">活動履歴を見る</a>
-    <a class="btn btn-ghost" href="#contact" style="margin-left:6px">連絡する</a>
+    <a class="btn" href="#timeline" data-i18n="btn_history">活動履歴を見る</a>
+    <a class="btn btn-ghost" href="#contact" data-i18n="btn_contact">連絡する</a>
   </div>
 </div>
 
-<!-- ====================================================================
-     TIMELINE（活動履歴） ★ここを一番上に移動しました
-     ==================================================================== -->
-<style>
-  /* リンクの基本設定（他の文字と同じ色にし、下線を消す） */
-  .hover-link {
-    color: inherit; 
-    text-decoration: none; 
-    transition: all 0.3s ease; /* 変化を滑らかにする */
-  }
-
-  /* マウスをかざした時のイベント設定 */
-  .hover-link:hover {
-    color: var(--main-color, #007BFF); /* サイトのメインカラー、または青色に変化 */
-    text-decoration: underline; /* 下線を出す */
-    opacity: 0.7; /* 少し透けさせてリンクっぽさを強調 */
-  }
-</style>
-
-<section id="timeline">
-  <div class="container reveal">
-    <p class="section-label">TIMELINE</p>
-    <h2 class="section-title">活動履歴</h2>
-
-    <!-- 2026年 -->
-    <h3 style="color: var(--dark-color); border-bottom: 1px solid #ccd; padding-bottom: 5px; margin-bottom: 15px; margin-top: 30px;">2026年（大学３年）</h3>
-    
-    <!-- インターン -->
-    <p style="color: var(--main-color); font-weight: bold; margin-bottom: 5px;">インターン</p>
-    <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
-      <li>10/20: 株式会社NTTデータ先端技術様 インターンシップ（脆弱性診断）</li>
-      <li>10/18: NTT-ME株式会社様　インターンシップ　（サイバーセキュリティ体験インターンシップ）</li>
-      <li><a href="https://note.com/motex/n/nd5897ce8445a?magazine_key=me44da7480b32" class="hover-link" target="_blank" rel="noopener noreferrer">9/9～9/11: エムオーテックス株式会社様 インターンシップ（セキュリティレッドコース）</a></li>
-      <li><a href="https://public.n-ats.hrmos.co/hr-mbsd/pages/2233494291461885952" class="hover-link" target="_blank" rel="noopener noreferrer">7/28～7/31: 三井物産セキュアディレクション株式会社様 インターンシップ（診断エンジニアコース）</a></li>
-      <li>株式会社ユービーセキュア様 1day仕事体験イベント 複数参加</li>
-    </ul>
-
-    <!-- CTF/セキュリティキャンプ -->
-    <p style="color: var(--main-color); font-weight: bold; margin-bottom: 5px;">CTF/セキュリティキャンプ</p>
-    <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
-      <li><a href="https://x.com/YamadaTaromlok/status/2109957527261892626" class="hover-link" target="_blank" rel="noopener noreferrer">10/9～10/12: FFRI × NFLabs. Cybersecurity Challenge 2026 参加予定</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2106306838266614101" class="hover-link" target="_blank" rel="noopener noreferrer">10/3: 総務省主催全国型CTF（東京会場）</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2104121120538681594" class="hover-link" target="_blank" rel="noopener noreferrer">9/26～9/27: セキュリティ・キャンプ2026ミニ（山梨開催）</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2098985502850646364" class="hover-link" target="_blank" rel="noopener noreferrer">9/12: セキュリティ・キャンプ2026ミニ（愛知開催）</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2096800944742957396" class="hover-link" target="_blank" rel="noopener noreferrer">9/6: SECCON Beginners Workshop 【大阪】</a></li>
-    </ul>
-
-    <!-- イベント・勉強会など -->
-    <p style="color: var(--main-color); font-weight: bold; margin-bottom: 5px;">イベント・勉強会など</p>
-    <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
-     <li><a href="リンク先のURL" class="hover-link" target="_blank" rel="noopener noreferrer">11/9:NTTセキュリティ・ジャパン　学生向けイベント「SOC紹介＆脅威分析体験ワークショップ」</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2107316655475101822" class="hover-link" target="_blank" rel="noopener noreferrer">10/31: Akires Tech Event #5｜現役セキュリティエンジニアと学ぶ 実践ハッキング体験会</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2105194491103834130" class="hover-link" target="_blank" rel="noopener noreferrer">10/29: MEGU-Meet ー脆弱性診断 × WAF Nightー 〜その脆弱性、ツールで見つかりますか？WAFで防げますか？〜 </a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2114696675986116731" class="hover-link" target="_blank" rel="noopener noreferrer">10/26: 第60回 MBSD セキュリティ勉強会</a></li>
-      <li><a href="リンク先のURL" class="hover-link" target="_blank" rel="noopener noreferrer">10/19: OWASP Saitama MTG #34</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2109259843173577031" class="hover-link" target="_blank" rel="noopener noreferrer">10/10～10/11: 技育祭2026【秋】</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2106892949657416158" class="hover-link" target="_blank" rel="noopener noreferrer">10/4:「WOLF VILLAGE NIGHT #1 ~ LT大会 & 交流会 ~」</a></li>
-      <li>10/2：セキュリティベンダ様のセキュリティ研修のサポートスタッフとして1日アルバイト</li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2104918243668558303" class="hover-link" target="_blank" rel="noopener noreferrer">9/29:NFLabs. Purple Flair Workshop #4（学生限定）</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2097313918473682970" class="hover-link" target="_blank" rel="noopener noreferrer">9/8: AIおよびAIエージェントによるセキュリティ診断の基礎</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2096799286885539930" class="hover-link" target="_blank" rel="noopener noreferrer">9/5: ひよこまめ教習所 #10 - 東京2周年記念スペシャル</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2094028952818049213" class="hover-link" target="_blank" rel="noopener noreferrer">8/29: セキュリティ未経験歓迎！AI×セキュリティ#3</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2093604414900813987" class="hover-link" target="_blank" rel="noopener noreferrer">8/28: 第59回 MBSD セキュリティ勉強会</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2091440678807163147" class="hover-link" target="_blank" rel="noopener noreferrer">8/23: 第2回 よわよわセキュリティ勉強会</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2091077107753558402" class="hover-link" target="_blank" rel="noopener noreferrer">8/22: 技育プロジェクト ミニカンファレンス</a></li>
-      <li><a href="https://mbsd-ws.doorkeeper.jp/events/197828" class="hover-link" target="_blank" rel="noopener noreferrer">7/14: 第58回 MBSD セキュリティ勉強会</a></li>
-    </ul>
-
-    <p style="color: var(--main-color); font-weight: bold; margin-bottom: 5px;">資格</p>
-    <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
-      <li>情報セキュリティマネジメント試験 合格</li>
-    </ul>
-
-    <!-- 2025年 -->
-    <h3 style="color: var(--dark-color); border-bottom: 1px solid #ccd; padding-bottom: 5px; margin-bottom: 15px; margin-top: 30px;">2025年（大学２年）</h3>
-    <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
-      <li>英検準１級受験（不合格）</li>
-      <li>基本情報技術者試験受験（不合格）</li>
-      <li>ドイツ語検定3級受験（不合格）</li>
-      <li>情報セキュリティマネジメント試験（不合格）</li>
-      <li>ダイソーでアルバイト(12月まで）</li>
-    </ul>
-
-    <!-- 2024年 -->
-    <h3 style="color: var(--dark-color); border-bottom: 1px solid #ccd; padding-bottom: 5px; margin-bottom: 15px; margin-top: 30px;">2024年（大学１年）</h3>
-    <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
-      <li>TOEIC IP試験 550点</li>
-      <li>ＩＴパスポート試験 合格</li>
-      <li>ドイツ語検定５級 合格</li>
-      <li>英検２級合格</li>
-      <li>英検準２級合格</li>
-      <li>ダイソーでアルバイト</li>
-    </ul>
-  </div>
-</section>
 
 <!-- ====================================================================
-     ABOUT（自己紹介 + プロフィール項目） ★2番目に移動しました（背景色クラス追加）
+     ABOUT（自己紹介 + プロフィール項目）
      ==================================================================== -->
 <section id="about" class="section-soft">
   <div class="container reveal">
     <p class="section-label">ABOUT</p>
-    <h2 class="section-title">わたしについて</h2>
+    <h2 class="section-title" data-i18n="about_title">わたしについて</h2>
 
     <div class="about-grid">
       <div>
-        <p>
-          はじめまして。学部3年の大学生です。<br/>
-          大学に入学してからITの勉強を始めました。<br/>
-          現在は趣味の一環としてCTFやアプリ開発などに取り組んでいます。
-        </p>
-        <p>
-          大学在学中の活動内容についてこのサイトにまとめています。気になるものがあればぜひ見てください。
-        </p>
+        <p data-i18n="about_p1">はじめまして。学部3年の大学生です。<br />大学に入学してからITの勉強を始めました。<br />感性工学に関する研究をしています。</p>
+        <p data-i18n="about_p2">大学在学中の活動内容についてこのサイトにまとめています。気になるものがあればぜひ見てください。</p>
       </div>
 
       <ul class="profile-list">
-        <li><span class="key">所属</span><span>日本工業大学</span></li>
-        <li><span class="key">拠点</span><span>関東</span></li>
-        <li><span class="key">興味</span><span>アプリ開発・CTF・サイバーセキュリティ</span></li>
-        <li><span class="key">趣味</span><span>CTF・将棋・ランニング・ブログ執筆・旅行・読書</span></li>
-        <li><span class="key">目標</span><span>
-             <p>・セキュリティキャンプやテックカンファレンスに登壇して自身が学んでいる技術（主にセキュリティ）について講演すること。</p>
-             <p>・セキュリティに関する資格（情報処理安全確保支援士・BSCP・eJPTv2・eWPT)を取得すること。</p>
-             <p>・学内でセキュリティに関する勉強会を定期的に開催すること。</p>
-        </span></li>
+        <li><span class="key" data-i18n="p_key_univ">所属</span><span data-i18n="p_val_univ">日本工業大学</span></li>
+        <li><span class="key" data-i18n="p_key_base">拠点</span><span data-i18n="p_val_base">日本全域</span></li>
+        <li><span class="key" data-i18n="p_key_interest">興味</span><span data-i18n="p_val_interest">IT全般・日本近代史（主に幕末維新史）・日本思想（水戸学や国学など）・社会学</span></li>
+        <li><span class="key" data-i18n="p_key_hobby">趣味</span><span data-i18n="p_val_hobby">CTF・将棋・ランニング・ブログ執筆・旅行・読書・和菓子作り</span></li>
+        <li><span class="key" data-i18n="p_key_goal">目標</span><span data-i18n="p_val_goal">・セキュリティに関する資格（情報処理安全確保支援士・BSCP・eJPTv2・eWPT)の取得。</span></li>
       </ul>
     </div>
   </div>
@@ -646,50 +123,126 @@ footer {
 
 
 <!-- ====================================================================
-     SKILLS（できること） ★3番目に移動しました（背景色クラス削除）
+     SKILLS（できること）
      ==================================================================== -->
 <section id="skills">
   <div class="container reveal">
     <p class="section-label">SKILLS</p>
-    <h2 class="section-title">できること・勉強中のこと</h2>
+    <h2 class="section-title" data-i18n="skills_title">できること・勉強中のこと</h2>
 
     <ul class="skill-list">
       <li>HTML</li>
       <li>CSS</li>
-      <li>JavaScript</li>      
+      <li>JavaScript</li>
       <li>PHP</li>
       <li>SQL</li>
-      <li>C言語</li>
+      <li data-i18n="skill_c">C言語</li>
       <li>C++</li>
       <li>Java</li>
       <li>Python</li>
       <li>Git / GitHub</li>
       <li>Linux</li>
-      <li>Laravel(学習中）</li>
+      <li data-i18n="skill_laravel">Laravel(学習中）</li>
     </ul>
-
-    <p class="skill-note">
-      <p>現在はWebアプリケーション開発やTry Hack Me、Web Security Academy、徳丸本</p>
-     <p>などの書籍を使ってWebセキュリティに関する学習をしています。</p>
-    </p>
   </div>
 </section>
 
 
 <!-- ====================================================================
-     CONTACT（連絡先） ★最後
+     TIMELINE（活動履歴）
+     ==================================================================== -->
+<section id="timeline">
+  <div class="container reveal">
+    <p class="section-label">TIMELINE</p>
+    <h2 class="section-title" data-i18n="timeline_title">活動履歴</h2>
+
+    <!-- 2026年 -->
+    <h3 class="year-title" data-i18n="y2026">2026年（大学３年）</h3>
+
+    <!-- インターン -->
+    <p class="cat-title" data-i18n="cat_intern">インターン</p>
+    <ul class="event-list">
+      <li data-i18n="in1">10/20: 株式会社NTTデータ先端技術様 インターンシップ（脆弱性診断）</li>
+      <li data-i18n="in2">10/18: NTT-ME株式会社様　インターンシップ　（サイバーセキュリティ体験インターンシップ）</li>
+      <li><a href="https://note.com/motex/n/nd5897ce8445a?magazine_key=me44da7480b32" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="in3">9/9～9/11: エムオーテックス株式会社様 インターンシップ（セキュリティレッドコース）</a></li>
+      <li><a href="https://public.n-ats.hrmos.co/hr-mbsd/pages/2233494291461885952" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="in4">7/28～7/31: 三井物産セキュアディレクション株式会社様 インターンシップ（診断エンジニアコース）</a></li>
+      <li data-i18n="in5">株式会社ユービーセキュア様 1day仕事体験イベント 複数参加</li>
+    </ul>
+
+    <!-- CTF/セキュリティキャンプ -->
+    <p class="cat-title" data-i18n="cat_ctf">CTF/セキュリティキャンプ</p>
+    <ul class="event-list">
+      <li><a href="https://x.com/YamadaTaromlok/status/2109957527261892626" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ctf1">10/9～10/12: FFRI × NFLabs. Cybersecurity Challenge 2026</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2106306838266614101" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ctf2">10/3: 総務省主催全国型CTF（東京会場）</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2104121120538681594" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ctf3">9/26～9/27: セキュリティ・キャンプ2026ミニ（山梨開催）</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2098985502850646364" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ctf4">9/12: セキュリティ・キャンプ2026ミニ（愛知開催）</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2096800944742957396" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ctf5">9/6: SECCON Beginners Workshop 【大阪】</a></li>
+    </ul>
+
+    <!-- イベント・勉強会など -->
+    <p class="cat-title" data-i18n="cat_event">イベント・勉強会など</p>
+    <ul class="event-list">
+      <li><a href="リンク先のURL" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev1">11/9:NTTセキュリティ・ジャパン　学生向けイベント「SOC紹介＆脅威分析体験ワークショップ」</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2107316655475101822" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev2">10/31: Akires Tech Event #5｜現役セキュリティエンジニアと学ぶ 実践ハッキング体験会</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2105194491103834130" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev3">10/29: MEGU-Meet ー脆弱性診断 × WAF Nightー 〜その脆弱性、ツールで見つかりますか？WAFで防げますか？〜</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2114696675986116731" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev4">10/26: 第60回 MBSD セキュリティ勉強会</a></li>
+      <li><a href="リンク先のURL" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev5">10/19: OWASP Saitama MTG #34</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2109259843173577031" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev6">10/10～10/11: 技育祭2026【秋】</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2106892949657416158" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev7">10/4:「WOLF VILLAGE NIGHT #1 ~ LT大会 & 交流会 ~」</a></li>
+      <li data-i18n="ev8">10/2：セキュリティベンダ様のセキュリティ研修のサポートスタッフとして1日アルバイト</li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2104918243668558303" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev9">9/29:NFLabs. Purple Flair Workshop #4（学生限定）</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2097313918473682970" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev10">9/8: AIおよびAIエージェントによるセキュリティ診断の基礎</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2096799286885539930" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev11">9/5: ひよこまめ教習所 #10 - 東京2周年記念スペシャル</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2094028952818049213" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev12">8/29: セキュリティ未経験歓迎！AI×セキュリティ#3</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2093604414900813987" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev13">8/28: 第59回 MBSD セキュリティ勉強会</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2091440678807163147" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev14">8/23: 第2回 よわよわセキュリティ勉強会</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2091077107753558402" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev15">8/22: 技育プロジェクト ミニカンファレンス</a></li>
+      <li><a href="https://mbsd-ws.doorkeeper.jp/events/197828" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev16">7/14: 第58回 MBSD セキュリティ勉強会</a></li>
+    </ul>
+
+    <p class="cat-title" data-i18n="cat_cert">資格</p>
+    <ul class="event-list">
+      <li data-i18n="cert1">情報セキュリティマネジメント試験 合格</li>
+    </ul>
+
+    <!-- 2025年 -->
+    <h3 class="year-title" data-i18n="y2025">2025年（大学２年）</h3>
+    <ul class="event-list">
+      <li data-i18n="y25_1">英検準１級受験（不合格）</li>
+      <li data-i18n="y25_2">基本情報技術者試験受験（不合格）</li>
+      <li data-i18n="y25_3">ドイツ語検定3級受験（不合格）</li>
+      <li data-i18n="y25_4">情報セキュリティマネジメント試験（不合格）</li>
+      <li data-i18n="y25_5">ダイソーでアルバイト(12月まで）</li>
+    </ul>
+
+    <!-- 2024年 -->
+    <h3 class="year-title" data-i18n="y2024">2024年（大学１年）</h3>
+    <ul class="event-list">
+      <li data-i18n="y24_1">TOEIC IP試験 550点</li>
+      <li data-i18n="y24_2">ＩＴパスポート試験 合格</li>
+      <li data-i18n="y24_3">ドイツ語検定５級 合格</li>
+      <li data-i18n="y24_4">英検２級合格</li>
+      <li data-i18n="y24_5">英検準２級合格</li>
+      <li data-i18n="y24_6">ダイソーでアルバイト</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ====================================================================
+     CONTACT（連絡先）
      ==================================================================== -->
 <section id="contact" class="contact section-soft">
   <div class="container reveal">
     <p class="section-label">CONTACT</p>
-    <h2 class="section-title">連絡先</h2>
+    <h2 class="section-title" data-i18n="contact_title">連絡先</h2>
 
-    <p>ご相談、一緒に何か挑戦したい方、感想でも大歓迎です。<br />以下のアカウントにお気軽にご連絡ください。</p>
+    <p data-i18n="contact_text">ご相談、一緒に何か挑戦したい方、感想でも大歓迎です。<br />以下のアカウントにお気軽にご連絡ください。</p>
 
     <div class="sns-links">
-      <a href="https://x.com/YamadaTaromlok" target="_blank" rel="noopener">X (Twitter)←活動を投稿しています。</a>
-      <a href="https://note.com/limber_auklet93" target="_blank" rel="noopener">note←技術ブログとかをこちらで投稿しています。</a>
-      <a href="https://github.com/Fuji60-x86cat" target="_blank" rel="noopener">GitHub←作成したプログラム等をこちらで公開しています。</a>
+      <a href="https://x.com/YamadaTaromlok" target="_blank" rel="noopener" data-i18n="sns_x">X (Twitter)←活動を投稿しています。</a>
+      <a href="https://note.com/limber_auklet93" target="_blank" rel="noopener" data-i18n="sns_note">note←技術ブログとかをこちらで投稿しています。</a>
+      <a href="https://github.com/Fuji60-x86cat" target="_blank" rel="noopener" data-i18n="sns_github">GitHub←作成したプログラム等をこちらで公開しています。</a>
     </div>
   </div>
 </section>
@@ -699,7 +252,7 @@ footer {
      フッター
      ==================================================================== -->
 <footer>
-  <p>&copy; <span id="year"></span> 三上風侍朗</p>
+  <p>&copy; <span id="year"></span> <span data-i18n="name">三上風侍朗</span></p>
 </footer>
 
 
@@ -736,8 +289,8 @@ function checkReveal() {
   });
 }
 
-checkReveal();                                  
-window.addEventListener("scroll", checkReveal); 
+checkReveal();
+window.addEventListener("scroll", checkReveal);
 window.addEventListener("resize", checkReveal);
 
 
@@ -760,23 +313,232 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 document.getElementById("year").textContent = new Date().getFullYear();
 
 
-// 【改造ネタ 1】下にスクロールするとヘッダーに影を付ける
- window.addEventListener("scroll", () => {
+// --------------------------------------------------------------------
+// ⑤ 下にスクロールするとヘッダーに影を付ける
+// --------------------------------------------------------------------
+window.addEventListener("scroll", () => {
   const h = document.querySelector("header");
   h.style.boxShadow = window.scrollY > 10 ? "0 2px 14px rgba(0,0,0,.07)" : "none";
 });
 
-// 【改造ネタ 2】ダークモードに切り替える
-document.getElementById("theme-btn").addEventListener("click", () => {
-  const r = document.documentElement;
-  const dark = r.style.getPropertyValue("--bg-color") === "#1b1f24";
-  r.style.setProperty("--bg-color",   dark ? "#fbfcfc" : "#1b1f24");
-  r.style.setProperty("--soft-color", dark ? "#f1f7f7" : "#242a31");
-  r.style.setProperty("--text-color", dark ? "#333c42" : "#e8edf0");
-  r.style.setProperty("--dark-color", dark ? "#1f2b33" : "#f5f8fa");
-  if (dark) { r.removeAttribute("data-theme"); }
-  else      { r.setAttribute("data-theme", "dark"); }
+
+// --------------------------------------------------------------------
+// ⑥ 言語の切り替え（日本語 / English / Русский）
+//    日本語は HTML に書いてある文章をそのまま使い、
+//    英語・ロシア語だけ下の translations から差し替えます
+// --------------------------------------------------------------------
+const translations = {
+
+  // ===================== English =====================
+  en: {
+    meta_title: "Fujiro Mikami | Portfolio",
+    meta_description: "Portfolio site of Fujiro Mikami, summarizing my profile, skills and activities so far.",
+    name: "Fujiro Mikami",
+    nav_about: "About", nav_skills: "Skills", nav_timeline: "Timeline", nav_contact: "Contact",
+
+    hero_affil: "3rd-year student, Department of Information Media Engineering, Faculty of Advanced Engineering, Nippon Institute of Technology",
+    qual_label: "Certifications",
+    qual_line1: "Mathematics Practical Skill Test Grade 3 / EIKEN Grade Pre-2 / EIKEN Grade 2 / German Language Test Grade 5",
+    qual_line2: "IT Passport Examination / TOEIC IP 550 points / Information Security Management Examination",
+    btn_history: "View my activities",
+    btn_contact: "Contact me",
+
+    about_title: "About Me",
+    about_p1: "Nice to meet you. I'm a third-year university student.<br />I started studying IT after entering university.<br />I do research on Kansei engineering.",
+    about_p2: "This site summarizes what I have done during my university years. Please take a look at anything that interests you.",
+    p_key_univ: "University", p_val_univ: "Nippon Institute of Technology",
+    p_key_base: "Location", p_val_base: "All over Japan",
+    p_key_interest: "Interests", p_val_interest: "IT in general, modern Japanese history (mainly the Bakumatsu and Meiji Restoration era), Japanese thought (Mito school, Kokugaku, etc.), sociology",
+    p_key_hobby: "Hobbies", p_val_hobby: "CTF, shogi, running, blogging, traveling, reading, making wagashi (Japanese sweets)",
+    p_key_goal: "Goals", p_val_goal: "・Earn security certifications (Registered Information Security Specialist, BSCP, eJPTv2, eWPT).",
+
+    skills_title: "Skills & What I'm Learning",
+    skill_c: "C",
+    skill_laravel: "Laravel (learning)",
+
+    timeline_title: "Activities",
+    y2026: "2026 (3rd year of university)",
+    cat_intern: "Internships",
+    in1: "Oct 20: NTT DATA Advanced Technology Corporation – Internship (Vulnerability Assessment)",
+    in2: "Oct 18: NTT-ME Corporation – Internship (Cybersecurity Experience Internship)",
+    in3: "Sep 9–11: MOTEX Inc. – Internship (Security Red Course)",
+    in4: "Jul 28–31: Mitsui Bussan Secure Directions, Inc. – Internship (Assessment Engineer Course)",
+    in5: "UBsecure, Inc. – 1-day work experience events (attended several)",
+
+    cat_ctf: "CTF / Security Camps",
+    ctf1: "Oct 9–12: FFRI × NFLabs. Cybersecurity Challenge 2026",
+    ctf2: "Oct 3: Nationwide CTF hosted by the Ministry of Internal Affairs and Communications (Tokyo venue)",
+    ctf3: "Sep 26–27: Security Camp 2026 Mini (held in Yamanashi)",
+    ctf4: "Sep 12: Security Camp 2026 Mini (held in Aichi)",
+    ctf5: "Sep 6: SECCON Beginners Workshop [Osaka]",
+
+    cat_event: "Events & Study Sessions",
+    ev1: "Nov 9: NTT Security Japan – Student event \"SOC Introduction & Threat Analysis Workshop\"",
+    ev2: "Oct 31: Akires Tech Event #5 | Hands-on hacking workshop with working security engineers",
+    ev3: "Oct 29: MEGU-Meet – Vulnerability Assessment × WAF Night – Can tools find that vulnerability? Can a WAF block it?",
+    ev4: "Oct 26: MBSD Security Study Session #60",
+    ev5: "Oct 19: OWASP Saitama MTG #34",
+    ev6: "Oct 10–11: Gikusai 2026 [Autumn]",
+    ev7: "Oct 4: \"WOLF VILLAGE NIGHT #1 – Lightning Talks & Networking\"",
+    ev8: "Oct 2: One-day part-time job as support staff for a security vendor's training",
+    ev9: "Sep 29: NFLabs. Purple Flair Workshop #4 (students only)",
+    ev10: "Sep 8: Fundamentals of Security Assessment with AI and AI Agents",
+    ev11: "Sep 5: Hiyokomame Kyoshujo #10 – Tokyo 2nd Anniversary Special",
+    ev12: "Aug 29: Security Beginners Welcome! AI × Security #3",
+    ev13: "Aug 28: MBSD Security Study Session #59",
+    ev14: "Aug 23: 2nd Yowayowa Security Study Session",
+    ev15: "Aug 22: Gikuproject Mini Conference",
+    ev16: "Jul 14: MBSD Security Study Session #58",
+
+    cat_cert: "Certifications",
+    cert1: "Passed the Information Security Management Examination",
+
+    y2025: "2025 (2nd year of university)",
+    y25_1: "Took EIKEN Grade Pre-1 (did not pass)",
+    y25_2: "Took the Fundamental Information Technology Engineer Examination (did not pass)",
+    y25_3: "Took the German Language Test Grade 3 (did not pass)",
+    y25_4: "Took the Information Security Management Examination (did not pass)",
+    y25_5: "Part-time job at Daiso (until December)",
+
+    y2024: "2024 (1st year of university)",
+    y24_1: "TOEIC IP Test – 550 points",
+    y24_2: "Passed the IT Passport Examination",
+    y24_3: "Passed the German Language Test Grade 5",
+    y24_4: "Passed EIKEN Grade 2",
+    y24_5: "Passed EIKEN Grade Pre-2",
+    y24_6: "Part-time job at Daiso",
+
+    contact_title: "Contact",
+    contact_text: "Questions, ideas for working together, or just feedback – all are welcome.<br />Feel free to reach out through the accounts below.",
+    sns_x: "X (Twitter) ← I post my activities here.",
+    sns_note: "note ← I post tech blogs and more here.",
+    sns_github: "GitHub ← I publish the programs I've made here."
+  },
+
+  // ===================== Русский =====================
+  ru: {
+    meta_title: "Фудзиро Миками | Портфолио",
+    meta_description: "Портфолио Фудзиро Миками: информация обо мне, навыки и вся моя деятельность на данный момент.",
+    name: "Фудзиро Миками",
+    nav_about: "Обо мне", nav_skills: "Навыки", nav_timeline: "История", nav_contact: "Контакты",
+
+    hero_affil: "Студент 3-го курса кафедры информационных медиатехнологий факультета передовой инженерии, Японский технологический институт (Nippon Institute of Technology)",
+    qual_label: "Квалификации",
+    qual_line1: "Практический экзамен по математике, 3-й уровень / EIKEN (английский), уровень Pre-2 / EIKEN (английский), 2-й уровень / Экзамен по немецкому языку, 5-й уровень",
+    qual_line2: "Экзамен IT Passport / TOEIC IP 550 баллов / Экзамен по управлению информационной безопасностью",
+    btn_history: "Моя деятельность",
+    btn_contact: "Связаться со мной",
+
+    about_title: "Обо мне",
+    about_p1: "Здравствуйте! Я студент третьего курса университета.<br />Изучение IT началось у меня уже после поступления в университет.<br />Занимаюсь исследованиями в области кансей-инженерии.",
+    about_p2: "На этом сайте собрана моя деятельность за годы учёбы в университете. Если что-то вас заинтересует — загляните!",
+    p_key_univ: "Вуз", p_val_univ: "Японский технологический институт (Nippon Institute of Technology)",
+    p_key_base: "Где живу", p_val_base: "По всей Японии",
+    p_key_interest: "Интересы", p_val_interest: "IT в целом, новая история Японии (в основном период Бакумацу и реставрации Мэйдзи), японская мысль (школа Мито, кокугаку и др.), социология",
+    p_key_hobby: "Хобби", p_val_hobby: "CTF, сёги, бег, ведение блога, путешествия, чтение, приготовление вагаси (японских сладостей)",
+    p_key_goal: "Цели", p_val_goal: "・Получить сертификаты по безопасности (Registered Information Security Specialist, BSCP, eJPTv2, eWPT).",
+
+    skills_title: "Навыки и то, что изучаю",
+    skill_c: "C",
+    skill_laravel: "Laravel (изучаю)",
+
+    timeline_title: "История деятельности",
+    y2026: "2026 г. (3-й курс)",
+    cat_intern: "Стажировки",
+    in1: "20.10: NTT DATA Advanced Technology Corporation — стажировка (оценка уязвимостей)",
+    in2: "18.10: NTT-ME Corporation — стажировка (практическое знакомство с кибербезопасностью)",
+    in3: "9–11.09: MOTEX Inc. — стажировка (курс Security Red)",
+    in4: "28–31.07: Mitsui Bussan Secure Directions, Inc. — стажировка (курс инженера по оценке безопасности)",
+    in5: "UBsecure, Inc. — однодневные ознакомительные мероприятия о работе (участие в нескольких)",
+
+    cat_ctf: "CTF / Кэмпы по безопасности",
+    ctf1: "9–12.10: FFRI × NFLabs. Cybersecurity Challenge 2026",
+    ctf2: "3.10: Всеяпонский CTF под эгидой Министерства внутренних дел и коммуникаций (площадка в Токио)",
+    ctf3: "26–27.09: Security Camp 2026 Mini (префектура Яманаси)",
+    ctf4: "12.09: Security Camp 2026 Mini (префектура Аити)",
+    ctf5: "6.09: SECCON Beginners Workshop [Осака]",
+
+    cat_event: "Мероприятия и семинары",
+    ev1: "9.11: NTT Security Japan — мероприятие для студентов «Знакомство с SOC и воркшоп по анализу угроз»",
+    ev2: "31.10: Akires Tech Event #5 | Практический хакерский воркшоп с действующими инженерами по безопасности",
+    ev3: "29.10: MEGU-Meet — Vulnerability Assessment × WAF Night — Найдёт ли инструмент эту уязвимость? Остановит ли её WAF?",
+    ev4: "26.10: 60-й семинар MBSD по безопасности",
+    ev5: "19.10: OWASP Saitama MTG #34",
+    ev6: "10–11.10: Gikusai 2026 [осень]",
+    ev7: "4.10: «WOLF VILLAGE NIGHT #1 — блиц-доклады и общение»",
+    ev8: "2.10: однодневная подработка в качестве вспомогательного персонала на обучении по безопасности в компании-вендоре",
+    ev9: "29.09: NFLabs. Purple Flair Workshop #4 (только для студентов)",
+    ev10: "8.09: Основы оценки безопасности с помощью ИИ и ИИ-агентов",
+    ev11: "5.09: Hiyokomame Kyoshujo #10 — специальный выпуск к 2-летию в Токио",
+    ev12: "29.08: Новички в безопасности приветствуются! ИИ × безопасность #3",
+    ev13: "28.08: 59-й семинар MBSD по безопасности",
+    ev14: "23.08: 2-й семинар по безопасности «Ёваёва»",
+    ev15: "22.08: Мини-конференция Giku Project",
+    ev16: "14.07: 58-й семинар MBSD по безопасности",
+
+    cat_cert: "Квалификации",
+    cert1: "Сдан экзамен по управлению информационной безопасностью (Information Security Management Examination)",
+
+    y2025: "2025 г. (2-й курс)",
+    y25_1: "Экзамен EIKEN уровня Pre-1 (не сдан)",
+    y25_2: "Экзамен Fundamental Information Technology Engineer (не сдан)",
+    y25_3: "Экзамен по немецкому языку, 3-й уровень (не сдан)",
+    y25_4: "Экзамен по управлению информационной безопасностью (не сдан)",
+    y25_5: "Подработка в Daiso (до декабря)",
+
+    y2024: "2024 г. (1-й курс)",
+    y24_1: "Тест TOEIC IP — 550 баллов",
+    y24_2: "Сдан экзамен IT Passport",
+    y24_3: "Сдан экзамен по немецкому языку, 5-й уровень",
+    y24_4: "Сдан EIKEN, 2-й уровень",
+    y24_5: "Сдан EIKEN, уровень Pre-2",
+    y24_6: "Подработка в Daiso",
+
+    contact_title: "Контакты",
+    contact_text: "Вопросы, идеи для совместных проектов или просто отзывы — всё приветствуется.<br />Пишите мне в любой из аккаунтов ниже.",
+    sns_x: "X (Twitter) ← здесь я публикую свою деятельность.",
+    sns_note: "note ← здесь я публикую технические блоги и не только.",
+    sns_github: "GitHub ← здесь я публикую свои программы."
+  }
+};
+
+// 日本語の文章は、読み込み時に HTML から控えておく
+const i18nNodes = document.querySelectorAll("[data-i18n]");
+i18nNodes.forEach((el) => { el.dataset.ja = el.innerHTML; });
+
+const jaTitle = document.title;
+const metaDesc = document.querySelector('meta[name="description"]');
+const jaDescription = metaDesc.getAttribute("content");
+const langButtons = document.querySelectorAll(".lang-btn");
+
+function setLang(lang) {
+  if (lang !== "ja" && !translations[lang]) lang = "ja";
+  const dict = translations[lang] || {};
+
+  i18nNodes.forEach((el) => {
+    const text = lang === "ja" ? el.dataset.ja : dict[el.dataset.i18n];
+    el.innerHTML = text !== undefined ? text : el.dataset.ja;
+  });
+
+  document.documentElement.lang = lang;
+  document.title = lang === "ja" ? jaTitle : dict.meta_title;
+  metaDesc.setAttribute("content", lang === "ja" ? jaDescription : dict.meta_description);
+
+  langButtons.forEach((btn) => {
+    btn.classList.toggle("is-active", btn.dataset.lang === lang);
+  });
+
+  try { localStorage.setItem("lang", lang); } catch (e) { /* 保存できなくても動く */ }
+}
+
+langButtons.forEach((btn) => {
+  btn.addEventListener("click", () => setLang(btn.dataset.lang));
 });
+
+// 前回選んだ言語を覚えておく（初回は日本語）
+let savedLang = "ja";
+try { savedLang = localStorage.getItem("lang") || "ja"; } catch (e) {}
+if (savedLang !== "ja") setLang(savedLang);
 </script>
 
 </body>
