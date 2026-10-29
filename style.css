@@ -408,21 +408,6 @@ footer {
   .logo { font-size: 15px; }
 }
 
-/* --------------------------------------------------------------------
-   セクションごとの背景色設定（白・緑の交互配置）
-   -------------------------------------------------------------------- */
-#about {
-  background: var(--bg-color); /* 白 */
-}
 
-#skills {
-  background: var(--soft-color); /* 薄い緑 */
-}
-
-#timeline {
-  background: var(--bg-color); /* 白 */
-}
-
-#contact {
   background: var(--soft-color); /* 薄い緑 */
 }
