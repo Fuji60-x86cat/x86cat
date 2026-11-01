@@ -1,56 +1,29 @@
 <!DOCTYPE html>
-<!-- ====================================================================
-     技育プロジェクト ミニカンファレンス 2026.08
-     ポートフォリオ（index.html）
 
-     ▼ 【ここを変える】【変更】で検索（Ctrl + F / Cmd + F）すると、
-         いじれる場所が全部出てきます
-     ▼ この灰色の説明文はコメントです。画面には出ません
-
-     【ファイルの構造】全部おなじ場所に並べます（フォルダは作りません）
-       index.html    ← このファイル（中身 HTML ＋ 動き JavaScript）
-       style.css     ← 見た目（CSS）
-       profile.jpg   ← プロフィール写真
-       hero.jpg      ← トップの背景画像（無くてもOK）
-       ogp.jpg       ← SNS シェア用のサムネイル
-
-     【多言語（日本語 / English / Русский）のしくみ】
-       ・HTML に書いてある日本語がそのまま「日本語版」です
-       ・data-i18n="キー名" が付いた場所だけが、言語ボタンで切り替わります
-       ・英語・ロシア語の文章は、いちばん下の <script> の translations にあります
-       ・文章を増やすとき：HTML に data-i18n="新しいキー" を付け、
-         translations の en と ru に同じキーで訳文を足します
-     ==================================================================== -->
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- 【ここを変える①】ブラウザのタブに出る文字 -->
   <title>三上風侍朗 | ポートフォリオ</title>
 
-  <!-- 【ここを変える②】検索結果に出る説明文（80〜120 文字くらい） -->
   <meta name="description" content="三上風侍朗のポートフォリオサイト。私の情報やスキル、これまでの活動をまとめています。" />
 
-  <!-- 【ここを変える③】SNS でシェアしたときのサムネイル（OGP）
-       og:image は公開後に「https://自分のURL/ogp.jpg」のような
-       完全なアドレスに書き換えます -->
+
   <meta property="og:title" content="三上風侍朗 | ポートフォリオ" />
   <meta property="og:description" content="自己紹介、スキル、活動履歴。" />
   <meta property="og:image" content="ogp.jpg" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- 見た目（CSS）は style.css に分けました -->
+
   <link rel="stylesheet" href="style.css" />
 </head>
 
 
 <body>
 
-<!-- ====================================================================
-     ヘッダー（上に固定されるメニュー）
-     ==================================================================== -->
+
 <header>
   <div class="header-inner">
     <a class="logo" href="#top" data-i18n="name">三上風侍朗</a>
@@ -74,9 +47,6 @@
 </header>
 
 
-<!-- ====================================================================
-     ヒーロー（トップの自己紹介）
-     ==================================================================== -->
 <div class="hero" id="top">
   <div class="container">
     <img src="profile.jpg" alt="プロフィール写真" />
@@ -96,10 +66,6 @@
 </div>
 
 
-<!-- ====================================================================
-     ABOUT（自己紹介 + プロフィール項目）
-     【修正】class="section-soft" を削除して背景を白にしました
-     ==================================================================== -->
 <section id="about">
   <div class="container reveal">
     <p class="section-label">ABOUT</p>
@@ -123,10 +89,7 @@
 </section>
 
 
-<!-- ====================================================================
-     SKILLS（できること）
-     【修正】class="section-soft" を追加して背景を薄緑にしました
-     ==================================================================== -->
+
 <section id="skills" class="section-soft">
   <div class="container reveal">
     <p class="section-label">SKILLS</p>
@@ -150,18 +113,16 @@
 </section>
 
 
-<!-- ====================================================================
-     TIMELINE（活動履歴）
-     ==================================================================== -->
+
 <section id="timeline">
   <div class="container reveal">
     <p class="section-label">TIMELINE</p>
     <h2 class="section-title" data-i18n="timeline_title">活動履歴</h2>
 
-    <!-- 2026年 -->
+
     <h3 class="year-title" data-i18n="y2026">2026年（大学３年）</h3>
 
-    <!-- インターン -->
+
     <p class="cat-title" data-i18n="cat_intern">インターン</p>
     <ul class="event-list">
       <li data-i18n="in1">10/20: 株式会社NTTデータ先端技術様 インターンシップ（脆弱性診断）</li>
@@ -171,7 +132,7 @@
       <li data-i18n="in5">株式会社ユービーセキュア様 1day仕事体験イベント 複数参加</li>
     </ul>
 
-    <!-- CTF/セキュリティキャンプ -->
+  
     <p class="cat-title" data-i18n="cat_ctf">CTF/セキュリティキャンプ</p>
     <ul class="event-list">
       <li><a href="https://x.com/YamadaTaromlok/status/2109957527261892626" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ctf1">10/9～10/12: FFRI × NFLabs. Cybersecurity Challenge 2026</a></li>
@@ -181,7 +142,7 @@
       <li><a href="https://x.com/YamadaTaromlok/status/2096800944742957396" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ctf5">9/6: SECCON Beginners Workshop 【大阪】</a></li>
     </ul>
 
-    <!-- イベント・勉強会など -->
+    
     <p class="cat-title" data-i18n="cat_event">イベント・勉強会など</p>
     <ul class="event-list">
       <li><a href="リンク先のURL" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev1">11/9:NTTセキュリティ・ジャパン 学生向けイベント「SOC紹介＆脅威分析体験ワークショップ」</a></li>
@@ -207,7 +168,7 @@
       <li data-i18n="cert1">情報セキュリティマネジメント試験 合格</li>
     </ul>
 
-    <!-- 2025年 -->
+ 
     <h3 class="year-title" data-i18n="y2025">2025年（大学２年）</h3>
     <ul class="event-list">
       <li data-i18n="y25_1">英検準１級受験（不合格）</li>
@@ -217,7 +178,7 @@
       <li data-i18n="y25_5">ダイソーでアルバイト(12月まで）</li>
     </ul>
 
-    <!-- 2024年 -->
+
     <h3 class="year-title" data-i18n="y2024">2024年（大学１年）</h3>
     <ul class="event-list">
       <li data-i18n="y24_1">TOEIC IP試験 550点</li>
@@ -231,9 +192,7 @@
 </section>
 
 
-<!-- ====================================================================
-     CONTACT（連絡先）
-     ==================================================================== -->
+
 <section id="contact" class="contact section-soft">
   <div class="container reveal">
     <p class="section-label">CONTACT</p>
@@ -250,22 +209,14 @@
 </section>
 
 
-<!-- ====================================================================
-     フッター
-     ==================================================================== -->
+
 <footer>
   <p>&copy; <span id="year"></span> <span data-i18n="name">三上風侍朗</span></p>
 </footer>
 
 
 <script>
-/* ====================================================================
-   ここから下が「動き」の設定（JavaScript）です
-   ==================================================================== */
 
-// --------------------------------------------------------------------
-// ① スマホのメニュー開閉
-// --------------------------------------------------------------------
 const menuBtn = document.getElementById("menu-btn");
 const nav = document.getElementById("nav");
 
@@ -278,9 +229,7 @@ nav.querySelectorAll("a").forEach((link) => {
 });
 
 
-// --------------------------------------------------------------------
-// ② スクロールでふわっと表示する
-// --------------------------------------------------------------------
+
 const revealItems = document.querySelectorAll(".reveal");
 
 function checkReveal() {
@@ -296,9 +245,6 @@ window.addEventListener("scroll", checkReveal);
 window.addEventListener("resize", checkReveal);
 
 
-// --------------------------------------------------------------------
-// ③ メニューを押したときになめらかにスクロールする
-// --------------------------------------------------------------------
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", (e) => {
     const target = document.querySelector(link.getAttribute("href"));
@@ -309,26 +255,18 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 });
 
 
-// --------------------------------------------------------------------
-// ④ フッターの年を自動で入れる
-// --------------------------------------------------------------------
+
 document.getElementById("year").textContent = new Date().getFullYear();
 
 
-// --------------------------------------------------------------------
-// ⑤ 下にスクロールするとヘッダーに影を付ける
-// --------------------------------------------------------------------
+
 window.addEventListener("scroll", () => {
   const h = document.querySelector("header");
   h.style.boxShadow = window.scrollY > 10 ? "0 2px 14px rgba(0,0,0,.07)" : "none";
 });
 
 
-// --------------------------------------------------------------------
-// ⑥ 言語の切り替え（日本語 / English / Русский）
-//    日本語は HTML に書いてある文章をそのまま使い、
-//    英語・ロシア語だけ下の translations から差し替えます
-// --------------------------------------------------------------------
+
 const translations = {
 
   // ===================== English =====================
@@ -504,7 +442,7 @@ const translations = {
   }
 };
 
-// 日本語の文章は、読み込み時に HTML から控えておく
+
 const i18nNodes = document.querySelectorAll("[data-i18n]");
 i18nNodes.forEach((el) => { el.dataset.ja = el.innerHTML; });
 
@@ -537,7 +475,6 @@ langButtons.forEach((btn) => {
   btn.addEventListener("click", () => setLang(btn.dataset.lang));
 });
 
-// 前回選んだ言語を覚えておく（初回は日本語）
 let savedLang = "ja";
 try { savedLang = localStorage.getItem("lang") || "ja"; } catch (e) {}
 if (savedLang !== "ja") setLang(savedLang);
