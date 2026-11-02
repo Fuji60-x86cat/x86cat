@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
@@ -9,91 +8,83 @@
 
   <meta name="description" content="三上風侍朗のポートフォリオサイト。私の情報やスキル、これまでの活動をまとめています。" />
 
-
   <meta property="og:title" content="三上風侍朗 | ポートフォリオ" />
   <meta property="og:description" content="自己紹介、スキル、活動履歴。" />
   <meta property="og:image" content="ogp.jpg" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-
+  <link rel="alternate" hreflang="en" href="index_en.html" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
-
 <body>
-
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="#top" data-i18n="name">三上風侍朗</a>
+    <a class="logo" href="#top">三上風侍朗</a>
 
     <nav class="nav" id="nav">
-      <a href="#about" data-i18n="nav_about">About</a>
-      <a href="#skills" data-i18n="nav_skills">Skills</a>
-      <a href="#timeline" data-i18n="nav_timeline">Timeline</a>
-      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#contact">Contact</a>
     </nav>
 
-    <!-- 言語切り替えボタン -->
+    <!-- 言語切り替え -->
     <div class="lang-switch" role="group" aria-label="Language">
-      <button type="button" class="lang-btn is-active" data-lang="ja">日本語</button>
-      <button type="button" class="lang-btn" data-lang="en">EN</button>
-      <button type="button" class="lang-btn" data-lang="ru">RU</button>
+      <a class="lang-btn is-active" href="index.html" hreflang="ja" aria-current="true">日本語</a>
+      <a class="lang-btn" href="index_en.html" hreflang="en">EN</a>
     </div>
 
     <button class="menu-btn" id="menu-btn" aria-label="メニュー">☰</button>
   </div>
 </header>
 
-
 <div class="hero" id="top">
   <div class="container">
     <img src="profile.jpg" alt="プロフィール写真" />
-    <h1 data-i18n="name">三上風侍朗</h1>
+    <h1>三上風侍朗</h1>
     <p class="roman">FUJIRO MIKAMI</p>
-    <p class="lead" data-i18n="hero_affil">日本工業大学 先進工学部 情報メディア工学科所属 ３年</p>
+    <p class="lead">日本工業大学 先進工学部 情報メディア工学科所属 ３年</p>
 
     <p class="qual">
-      <span class="qual-label" data-i18n="qual_label">保有資格</span>
-      <span class="qual-line" data-i18n="qual_line1">実用数学技能検定3級 / 実用英語技能検定準2級 / 実用英語技能検定2級 / ドイツ語検定5級</span>
-      <span class="qual-line" data-i18n="qual_line2">ITパスポート試験 / TOEIC IP 550点 / 情報セキュリティマネジメント試験</span>
+      <span class="qual-label">保有資格</span>
+      <span class="qual-line">実用数学技能検定3級 / 実用英語技能検定準2級 / 実用英語技能検定2級 / ドイツ語検定5級</span>
+      <span class="qual-line">ITパスポート試験 / TOEIC IP 550点 / 情報セキュリティマネジメント試験</span>
     </p>
 
-    <a class="btn" href="#timeline" data-i18n="btn_history">活動履歴を見る</a>
-    <a class="btn btn-ghost" href="#contact" data-i18n="btn_contact">連絡する</a>
+    <a class="btn" href="#timeline">活動履歴を見る</a>
+    <a class="btn btn-ghost" href="#contact">連絡する</a>
   </div>
 </div>
-
 
 <section id="about">
   <div class="container reveal">
     <p class="section-label">ABOUT</p>
-    <h2 class="section-title" data-i18n="about_title">わたしについて</h2>
+    <h2 class="section-title">わたしについて</h2>
 
     <div class="about-grid">
       <div>
-        <p data-i18n="about_p1">はじめまして。学部3年の大学生です。<br />大学に入学してからITの勉強を始めました。<br />感性工学に関する研究室に所属しています。</p>
-        <p data-i18n="about_p2">大学在学中の活動内容についてこのサイトにまとめています。気になるものがあればぜひ見てください。</p>
+        <p>はじめまして。学部3年の大学生です。<br />大学に入学してからITの勉強を始めました。<br />感性工学に関する研究室に所属しています。</p>
+        <p>大学在学中の活動内容についてこのサイトにまとめています。気になるものがあればぜひ見てください。</p>
       </div>
 
       <ul class="profile-list">
-        <li><span class="key" data-i18n="p_key_univ">所属</span><span data-i18n="p_val_univ">日本工業大学</span></li>
-        <li><span class="key" data-i18n="p_key_base">拠点</span><span data-i18n="p_val_base">日本全域</span></li>
-        <li><span class="key" data-i18n="p_key_interest">興味</span><span data-i18n="p_val_interest">IT全般</span></li>
-        <li><span class="key" data-i18n="p_key_hobby">趣味</span><span data-i18n="p_val_hobby">CTF・将棋・ランニング・ブログ執筆・旅行・読書・和菓子作り</span></li>
-        <li><span class="key" data-i18n="p_key_goal">目標</span><span data-i18n="p_val_goal">・セキュリティに関する資格（情報処理安全確保支援士・BSCP・eJPTv2・eWPT)の取得。</span>     
+        <li><span class="key">所属</span><span>日本工業大学</span></li>
+        <li><span class="key">拠点</span><span>日本全域</span></li>
+        <li><span class="key">興味</span><span>IT全般</span></li>
+        <li><span class="key">趣味</span><span>CTF・将棋・ランニング・ブログ執筆・旅行・読書・和菓子作り</span></li>
+        <li><span class="key">目標</span><span>・セキュリティに関する資格（情報処理安全確保支援士・BSCP・eJPTv2・eWPT)の取得。</span></li>
       </ul>
     </div>
   </div>
 </section>
 
-
-
 <section id="skills" class="section-soft">
   <div class="container reveal">
     <p class="section-label">SKILLS</p>
-    <h2 class="section-title" data-i18n="skills_title">できること・勉強中のこと</h2>
+    <h2 class="section-title">できること・勉強中のこと</h2>
 
     <ul class="skill-list">
       <li>HTML</li>
@@ -101,384 +92,107 @@
       <li>JavaScript</li>
       <li>PHP</li>
       <li>SQL</li>
-      <li data-i18n="skill_c">C言語</li>
+      <li>C言語</li>
       <li>C++</li>
       <li>Java</li>
       <li>Python</li>
       <li>Git / GitHub</li>
       <li>Linux</li>
-      <li data-i18n="skill_laravel">Laravel(学習中）</li>
+      <li>Laravel(学習中）</li>
     </ul>
   </div>
 </section>
-
-
 
 <section id="timeline">
   <div class="container reveal">
     <p class="section-label">TIMELINE</p>
-    <h2 class="section-title" data-i18n="timeline_title">活動履歴</h2>
+    <h2 class="section-title">活動履歴</h2>
 
+    <h3 class="year-title">2026年（大学３年）</h3>
 
-    <h3 class="year-title" data-i18n="y2026">2026年（大学３年）</h3>
-
-
-    <p class="cat-title" data-i18n="cat_intern">インターン</p>
+    <p class="cat-title">インターン</p>
     <ul class="event-list">
-      <li data-i18n="in1">10/20: 株式会社NTTデータ先端技術様 インターンシップ（脆弱性診断）</li>
-      <li data-i18n="in2">10/18: NTT-ME株式会社様 インターンシップ （サイバーセキュリティ体験インターンシップ）</li>
-      <li><a href="https://note.com/motex/n/nd5897ce8445a?magazine_key=me44da7480b32" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="in3">9/9～9/11: エムオーテックス株式会社様 インターンシップ（セキュリティレッドコース）</a></li>
-      <li><a href="https://public.n-ats.hrmos.co/hr-mbsd/pages/2233494291461885952" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="in4">7/28～7/31: 三井物産セキュアディレクション株式会社様 インターンシップ（診断エンジニアコース）</a></li>
-      <li data-i18n="in5">株式会社ユービーセキュア様 1day仕事体験イベント 複数参加</li>
+      <li>10/20: 株式会社NTTデータ先端技術様 インターンシップ（脆弱性診断）</li>
+      <li>10/18: NTT-ME株式会社様 インターンシップ （サイバーセキュリティ体験インターンシップ）</li>
+      <li><a href="https://note.com/motex/n/nd5897ce8445a?magazine_key=me44da7480b32" class="hover-link" target="_blank" rel="noopener noreferrer">9/9～9/11: エムオーテックス株式会社様 インターンシップ（セキュリティレッドコース）</a></li>
+      <li><a href="https://public.n-ats.hrmos.co/hr-mbsd/pages/2233494291461885952" class="hover-link" target="_blank" rel="noopener noreferrer">7/28～7/31: 三井物産セキュアディレクション株式会社様 インターンシップ（診断エンジニアコース）</a></li>
+      <li>株式会社ユービーセキュア様 1day仕事体験イベント 複数参加</li>
     </ul>
 
-  
-    <p class="cat-title" data-i18n="cat_ctf">CTF/セキュリティキャンプ</p>
+    <p class="cat-title">CTF/セキュリティキャンプ</p>
     <ul class="event-list">
-      <li><a href="https://x.com/YamadaTaromlok/status/2109957527261892626" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ctf1">10/9～10/12: FFRI × NFLabs. Cybersecurity Challenge 2026</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2106306838266614101" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ctf2">10/3: 総務省主催全国型CTF（東京会場）</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2104121120538681594" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ctf3">9/26～9/27: セキュリティ・キャンプ2026ミニ（山梨開催）</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2098985502850646364" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ctf4">9/12: セキュリティ・キャンプ2026ミニ（愛知開催）</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2096800944742957396" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ctf5">9/6: SECCON Beginners Workshop 【大阪】</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2109957527261892626" class="hover-link" target="_blank" rel="noopener noreferrer">10/9～10/12: FFRI × NFLabs. Cybersecurity Challenge 2026</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2106306838266614101" class="hover-link" target="_blank" rel="noopener noreferrer">10/3: 総務省主催全国型CTF（東京会場）</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2104121120538681594" class="hover-link" target="_blank" rel="noopener noreferrer">9/26～9/27: セキュリティ・キャンプ2026ミニ（山梨開催）</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2098985502850646364" class="hover-link" target="_blank" rel="noopener noreferrer">9/12: セキュリティ・キャンプ2026ミニ（愛知開催）</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2096800944742957396" class="hover-link" target="_blank" rel="noopener noreferrer">9/6: SECCON Beginners Workshop 【大阪】</a></li>
     </ul>
 
-    
-    <p class="cat-title" data-i18n="cat_event">イベント・勉強会など</p>
+    <p class="cat-title">イベント・勉強会など</p>
     <ul class="event-list">
-      <li><a href="リンク先のURL" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev1">11/9:NTTセキュリティ・ジャパン 学生向けイベント「SOC紹介＆脅威分析体験ワークショップ」</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2116779603364851790" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev2">10/31: Akires Tech Event #5｜現役セキュリティエンジニアと学ぶ 実践ハッキング体験会</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2115801631384285445" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev3">10/29: MEGU-Meet ー脆弱性診断 × WAF Nightー 〜その脆弱性、ツールで見つかりますか？WAFで防げますか？〜</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2114696675986116731" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev4">10/26: 第60回 MBSD セキュリティ勉強会</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2112143416058696018" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev5">10/19: OWASP Saitama MTG #34</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2109259843173577031" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev6">10/10～10/11: 技育祭2026【秋】</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2106892949657416158" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev7">10/4:「WOLF VILLAGE NIGHT #1 ~ LT大会 & 交流会 ~」</a></li>
-      <li data-i18n="ev8">10/2：セキュリティベンダ様のセキュリティ研修のサポートスタッフとして1日アルバイト</li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2104918243668558303" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev9">9/29:NFLabs. Purple Flair Workshop #4（学生限定）</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2097313918473682970" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev10">9/8: AIおよびAIエージェントによるセキュリティ診断の基礎</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2096799286885539930" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev11">9/5: ひよこまめ教習所 #10 - 東京2周年記念スペシャル</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2094028952818049213" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev12">8/29: セキュリティ未経験歓迎！AI×セキュリティ#3</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2093604414900813987" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev13">8/28: 第59回 MBSD セキュリティ勉強会</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2091440678807163147" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev14">8/23: 第2回 よわよわセキュリティ勉強会</a></li>
-      <li><a href="https://x.com/YamadaTaromlok/status/2091077107753558402" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev15">8/22: 技育プロジェクト ミニカンファレンス</a></li>
-      <li><a href="https://mbsd-ws.doorkeeper.jp/events/197828" class="hover-link" target="_blank" rel="noopener noreferrer" data-i18n="ev16">7/14: 第58回 MBSD セキュリティ勉強会</a></li>
+      <li><a href="リンク先のURL" class="hover-link" target="_blank" rel="noopener noreferrer">11/9:NTTセキュリティ・ジャパン 学生向けイベント「SOC紹介＆脅威分析体験ワークショップ」</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2116779603364851790" class="hover-link" target="_blank" rel="noopener noreferrer">10/31: Akires Tech Event #5｜現役セキュリティエンジニアと学ぶ 実践ハッキング体験会</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2115801631384285445" class="hover-link" target="_blank" rel="noopener noreferrer">10/29: MEGU-Meet ー脆弱性診断 × WAF Nightー 〜その脆弱性、ツールで見つかりますか？WAFで防げますか？〜</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2114696675986116731" class="hover-link" target="_blank" rel="noopener noreferrer">10/26: 第60回 MBSD セキュリティ勉強会</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2112143416058696018" class="hover-link" target="_blank" rel="noopener noreferrer">10/19: OWASP Saitama MTG #34</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2109259843173577031" class="hover-link" target="_blank" rel="noopener noreferrer">10/10～10/11: 技育祭2026【秋】</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2106892949657416158" class="hover-link" target="_blank" rel="noopener noreferrer">10/4:「WOLF VILLAGE NIGHT #1 ~ LT大会 & 交流会 ~」</a></li>
+      <li>10/2：セキュリティベンダ様のセキュリティ研修のサポートスタッフとして1日アルバイト</li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2104918243668558303" class="hover-link" target="_blank" rel="noopener noreferrer">9/29:NFLabs. Purple Flair Workshop #4（学生限定）</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2097313918473682970" class="hover-link" target="_blank" rel="noopener noreferrer">9/8: AIおよびAIエージェントによるセキュリティ診断の基礎</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2096799286885539930" class="hover-link" target="_blank" rel="noopener noreferrer">9/5: ひよこまめ教習所 #10 - 東京2周年記念スペシャル</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2094028952818049213" class="hover-link" target="_blank" rel="noopener noreferrer">8/29: セキュリティ未経験歓迎！AI×セキュリティ#3</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2093604414900813987" class="hover-link" target="_blank" rel="noopener noreferrer">8/28: 第59回 MBSD セキュリティ勉強会</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2091440678807163147" class="hover-link" target="_blank" rel="noopener noreferrer">8/23: 第2回 よわよわセキュリティ勉強会</a></li>
+      <li><a href="https://x.com/YamadaTaromlok/status/2091077107753558402" class="hover-link" target="_blank" rel="noopener noreferrer">8/22: 技育プロジェクト ミニカンファレンス</a></li>
+      <li><a href="https://mbsd-ws.doorkeeper.jp/events/197828" class="hover-link" target="_blank" rel="noopener noreferrer">7/14: 第58回 MBSD セキュリティ勉強会</a></li>
     </ul>
 
-    <p class="cat-title" data-i18n="cat_cert">資格</p>
+    <p class="cat-title">資格</p>
     <ul class="event-list">
-      <li data-i18n="cert1">情報セキュリティマネジメント試験 合格</li>
+      <li>情報セキュリティマネジメント試験 合格</li>
     </ul>
 
- 
-    <h3 class="year-title" data-i18n="y2025">2025年（大学２年）</h3>
+    <h3 class="year-title">2025年（大学２年）</h3>
     <ul class="event-list">
-      <li data-i18n="y25_1">英検準１級受験（不合格）</li>
-      <li data-i18n="y25_2">基本情報技術者試験受験（不合格）</li>
-      <li data-i18n="y25_3">ドイツ語検定3級受験（不合格）</li>
-      <li data-i18n="y25_4">情報セキュリティマネジメント試験（不合格）</li>
-      <li data-i18n="y25_5">ダイソーでアルバイト(12月まで）</li>
+      <li>英検準１級受験（不合格）</li>
+      <li>基本情報技術者試験受験（不合格）</li>
+      <li>ドイツ語検定3級受験（不合格）</li>
+      <li>情報セキュリティマネジメント試験（不合格）</li>
+      <li>ダイソーでアルバイト(12月まで）</li>
     </ul>
 
-
-    <h3 class="year-title" data-i18n="y2024">2024年（大学１年）</h3>
+    <h3 class="year-title">2024年（大学１年）</h3>
     <ul class="event-list">
-      <li data-i18n="y24_1">TOEIC IP試験 550点</li>
-      <li data-i18n="y24_2">ＩＴパスポート試験 合格</li>
-      <li data-i18n="y24_3">ドイツ語検定５級 合格</li>
-      <li data-i18n="y24_4">英検２級合格</li>
-      <li data-i18n="y24_5">英検準２級合格</li>
-      <li data-i18n="y24_6">ダイソーでアルバイト</li>
+      <li>TOEIC IP試験 550点</li>
+      <li>ＩＴパスポート試験 合格</li>
+      <li>ドイツ語検定５級 合格</li>
+      <li>英検２級合格</li>
+      <li>英検準２級合格</li>
+      <li>ダイソーでアルバイト</li>
     </ul>
   </div>
 </section>
-
-
 
 <section id="contact" class="contact section-soft">
   <div class="container reveal">
     <p class="section-label">CONTACT</p>
-    <h2 class="section-title" data-i18n="contact_title">連絡先</h2>
+    <h2 class="section-title">連絡先</h2>
 
-    <p data-i18n="contact_text">ご相談、一緒に何か挑戦したい方、感想でも大歓迎です。<br />以下のアカウントにお気軽にご連絡ください。</p>
+    <p>ご相談、一緒に何か挑戦したい方、感想でも大歓迎です。<br />以下のアカウントにお気軽にご連絡ください。</p>
 
     <div class="sns-links">
-      <a href="https://x.com/YamadaTaromlok" target="_blank" rel="noopener" data-i18n="sns_x">X (Twitter)←活動を投稿しています。</a>
-      <a href="https://note.com/limber_auklet93" target="_blank" rel="noopener" data-i18n="sns_note">note←技術ブログとかをこちらで投稿しています。</a>
-      <a href="https://github.com/Fuji60-x86cat" target="_blank" rel="noopener" data-i18n="sns_github">GitHub←作成したプログラム等をこちらで公開しています。</a>
+      <a href="https://x.com/YamadaTaromlok" target="_blank" rel="noopener">X (Twitter)←活動を投稿しています。</a>
+      <a href="https://note.com/limber_auklet93" target="_blank" rel="noopener">note←技術ブログとかをこちらで投稿しています。</a>
+      <a href="https://github.com/Fuji60-x86cat" target="_blank" rel="noopener">GitHub←作成したプログラム等をこちらで公開しています。</a>
     </div>
   </div>
 </section>
 
-
-
 <footer>
-  <p>&copy; <span id="year"></span> <span data-i18n="name">三上風侍朗</span></p>
+  <p>&copy; <span id="year"></span> <span>三上風侍朗</span></p>
 </footer>
 
-
-<script>
-
-const menuBtn = document.getElementById("menu-btn");
-const nav = document.getElementById("nav");
-
-menuBtn.addEventListener("click", () => {
-  nav.classList.toggle("is-open");
-});
-
-nav.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => nav.classList.remove("is-open"));
-});
-
-
-
-const revealItems = document.querySelectorAll(".reveal");
-
-function checkReveal() {
-  revealItems.forEach((el) => {
-    if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
-      el.classList.add("is-visible");
-    }
-  });
-}
-
-checkReveal();
-window.addEventListener("scroll", checkReveal);
-window.addEventListener("resize", checkReveal);
-
-
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener("click", (e) => {
-    const target = document.querySelector(link.getAttribute("href"));
-    if (!target) return;
-    e.preventDefault();
-    target.scrollIntoView({ behavior: "smooth" });
-  });
-});
-
-
-
-document.getElementById("year").textContent = new Date().getFullYear();
-
-
-
-window.addEventListener("scroll", () => {
-  const h = document.querySelector("header");
-  h.style.boxShadow = window.scrollY > 10 ? "0 2px 14px rgba(0,0,0,.07)" : "none";
-});
-
-
-
-const translations = {
-
-  // ===================== English =====================
-  en: {
-    meta_title: "Fujiro Mikami | Portfolio",
-    meta_description: "Portfolio site of Fujiro Mikami, summarizing my profile, skills and activities so far.",
-    name: "Fujiro Mikami",
-    nav_about: "About", nav_skills: "Skills", nav_timeline: "Timeline", nav_contact: "Contact",
-
-    hero_affil: "3rd-year student, Department of Information Media Engineering, Faculty of Advanced Engineering, Nippon Institute of Technology",
-    qual_label: "Certifications",
-    qual_line1: "Mathematics Practical Skill Test Grade 3 / EIKEN Grade Pre-2 / EIKEN Grade 2 / German Language Test Grade 5",
-    qual_line2: "IT Passport Examination / TOEIC IP 550 points / Information Security Management Examination",
-    btn_history: "View my activities",
-    btn_contact: "Contact me",
-
-    about_title: "About Me",
-    about_p1: "Nice to meet you. I'm a third-year university student.<br />I started studying IT after entering university.<br />I do research on Kansei engineering.",
-    about_p2: "This site summarizes what I have done during my university years. Please take a look at anything that interests you.",
-    p_key_univ: "University", p_val_univ: "Nippon Institute of Technology",
-    p_key_base: "Location", p_val_base: "All over Japan",
-    p_key_interest: "Interests", p_val_interest: "IT in general, modern Japanese history (mainly the Bakumatsu and Meiji Restoration era), Japanese thought (Mito school, Kokugaku, etc.), sociology",
-    p_key_hobby: "Hobbies", p_val_hobby: "CTF, shogi, running, blogging, traveling, reading, making wagashi (Japanese sweets)",
-    p_key_goal: "Goals", p_val_goal: "・Earn security certifications (Registered Information Security Specialist, BSCP, eJPTv2, eWPT).",
-
-    skills_title: "Skills & What I'm Learning",
-    skill_c: "C",
-    skill_laravel: "Laravel (learning)",
-
-    timeline_title: "Activities",
-    y2026: "2026 (3rd year of university)",
-    cat_intern: "Internships",
-    in1: "Oct 20: NTT DATA Advanced Technology Corporation – Internship (Vulnerability Assessment)",
-    in2: "Oct 18: NTT-ME Corporation – Internship (Cybersecurity Experience Internship)",
-    in3: "Sep 9–11: MOTEX Inc. – Internship (Security Red Course)",
-    in4: "Jul 28–31: Mitsui Bussan Secure Directions, Inc. – Internship (Assessment Engineer Course)",
-    in5: "UBsecure, Inc. – 1-day work experience events (attended several)",
-
-    cat_ctf: "CTF / Security Camps",
-    ctf1: "Oct 9–12: FFRI × NFLabs. Cybersecurity Challenge 2026",
-    ctf2: "Oct 3: Nationwide CTF hosted by the Ministry of Internal Affairs and Communications (Tokyo venue)",
-    ctf3: "Sep 26–27: Security Camp 2026 Mini (held in Yamanashi)",
-    ctf4: "Sep 12: Security Camp 2026 Mini (held in Aichi)",
-    ctf5: "Sep 6: SECCON Beginners Workshop [Osaka]",
-
-    cat_event: "Events & Study Sessions",
-    ev1: "Nov 9: NTT Security Japan – Student event \"SOC Introduction & Threat Analysis Workshop\"",
-    ev2: "Oct 31: Akires Tech Event #5 | Hands-on hacking workshop with working security engineers",
-    ev3: "Oct 29: MEGU-Meet – Vulnerability Assessment × WAF Night – Can tools find that vulnerability? Can a WAF block it?",
-    ev4: "Oct 26: MBSD Security Study Session #60",
-    ev5: "Oct 19: OWASP Saitama MTG #34",
-    ev6: "Oct 10–11: Gikusai 2026 [Autumn]",
-    ev7: "Oct 4: \"WOLF VILLAGE NIGHT #1 – Lightning Talks & Networking\"",
-    ev8: "Oct 2: One-day part-time job as support staff for a security vendor's training",
-    ev9: "Sep 29: NFLabs. Purple Flair Workshop #4 (students only)",
-    ev10: "Sep 8: Fundamentals of Security Assessment with AI and AI Agents",
-    ev11: "Sep 5: Hiyokomame Kyoshujo #10 – Tokyo 2nd Anniversary Special",
-    ev12: "Aug 29: Security Beginners Welcome! AI × Security #3",
-    ev13: "Aug 28: MBSD Security Study Session #59",
-    ev14: "Aug 23: 2nd Yowayowa Security Study Session",
-    ev15: "Aug 22: Gikuproject Mini Conference",
-    ev16: "Jul 14: MBSD Security Study Session #58",
-
-    cat_cert: "Certifications",
-    cert1: "Passed the Information Security Management Examination",
-
-    y2025: "2025 (2nd year of university)",
-    y25_1: "Took EIKEN Grade Pre-1 (did not pass)",
-    y25_2: "Took the Fundamental Information Technology Engineer Examination (did not pass)",
-    y25_3: "Took the German Language Test Grade 3 (did not pass)",
-    y25_4: "Took the Information Security Management Examination (did not pass)",
-    y25_5: "Part-time job at Daiso (until December)",
-
-    y2024: "2024 (1st year of university)",
-    y24_1: "TOEIC IP Test – 550 points",
-    y24_2: "Passed the IT Passport Examination",
-    y24_3: "Passed the German Language Test Grade 5",
-    y24_4: "Passed EIKEN Grade 2",
-    y24_5: "Passed EIKEN Grade Pre-2",
-    y24_6: "Part-time job at Daiso",
-
-    contact_title: "Contact",
-    contact_text: "Questions, ideas for working together, or just feedback – all are welcome.<br />Feel free to reach out through the accounts below.",
-    sns_x: "X (Twitter) ← I post my activities here.",
-    sns_note: "note ← I post tech blogs and more here.",
-    sns_github: "GitHub ← I publish the programs I've made here."
-  },
-
-  // ===================== Русский =====================
-  ru: {
-    meta_title: "Фудзиро Миками | Портфолио",
-    meta_description: "Портфолио Фудзиро Миками: информация обо мне, навыки и вся моя деятельность на данный момент.",
-    name: "Фудзиро Миками",
-    nav_about: "Обо мне", nav_skills: "Навыки", nav_timeline: "История", nav_contact: "Контакты",
-
-    hero_affil: "Студент 3-го курса кафедры информационных медиатехнологий факультета передовой инженерии, Японский технологический институт (Nippon Institute of Technology)",
-    qual_label: "Квалификации",
-    qual_line1: "Практический экзамен по математике, 3-й уровень / EIKEN (английский), уровень Pre-2 / EIKEN (английский), 2-й уровень / Экзамен по немецкому языку, 5-й уровень",
-    qual_line2: "Экзамен IT Passport / TOEIC IP 550 баллов / Экзамен по управлению информационной безопасностью",
-    btn_history: "Моя деятельность",
-    btn_contact: "Связаться со мной",
-
-    about_title: "Обо мне",
-    about_p1: "Здравствуйте! Я студент третьего курса университета.<br />Изучение IT началось у меня уже после поступления в университет.<br />Занимаюсь исследованиями в области кансей-инженерии.",
-    about_p2: "На этом сайте собрана моя деятельность за годы учёбы в университете. Если что-то вас заинтересует — загляните!",
-    p_key_univ: "Вуз", p_val_univ: "Японский технологический институт (Nippon Institute of Technology)",
-    p_key_base: "Где живу", p_val_base: "По всей Японии",
-    p_key_interest: "Интересы", p_val_interest: "IT в целом, новая история Японии (в основном период Бакумацу и реставрации Мэйдзи), японская мысль (школа Мито, кокугаку и др.), социология",
-    p_key_hobby: "Хобби", p_val_hobby: "CTF, сёги, бег, ведение блога, путешествия, чтение, приготовление вагаси (японских сладостей)",
-    p_key_goal: "Цели", p_val_goal: "・Получить сертификаты по безопасности (Registered Information Security Specialist, BSCP, eJPTv2, eWPT).",
-
-    skills_title: "Навыки и то, что изучаю",
-    skill_c: "C",
-    skill_laravel: "Laravel (изучаю)",
-
-    timeline_title: "История деятельности",
-    y2026: "2026 г. (3-й курс)",
-    cat_intern: "Стажировки",
-    in1: "20.10: NTT DATA Advanced Technology Corporation — стажировка (оценка уязвимостей)",
-    in2: "18.10: NTT-ME Corporation — стажировка (практическое знакомство с кибербезопасностью)",
-    in3: "9–11.09: MOTEX Inc. — стажировка (курс Security Red)",
-    in4: "28–31.07: Mitsui Bussan Secure Directions, Inc. — стажировка (курс инженера по оценке безопасности)",
-    in5: "UBsecure, Inc. — однодневные ознакомительные мероприятия о работе (участие в нескольких)",
-
-    cat_ctf: "CTF / Кэмпы по безопасности",
-    ctf1: "9–12.10: FFRI × NFLabs. Cybersecurity Challenge 2026",
-    ctf2: "3.10: Всеяпонский CTF под эгидой Министерства внутренних дел и коммуникаций (площадка в Токио)",
-    ctf3: "26–27.09: Security Camp 2026 Mini (префектура Яманаси)",
-    ctf4: "12.09: Security Camp 2026 Mini (префектура Аити)",
-    ctf5: "6.09: SECCON Beginners Workshop [Осака]",
-
-    cat_event: "Мероприятия и семинары",
-    ev1: "9.11: NTT Security Japan — мероприятие для студентов «Знакомство с SOC и воркшоп по анализу угроз»",
-    ev2: "31.10: Akires Tech Event #5 | Практический хакерский воркшоп с действующими инженерами по безопасности",
-    ev3: "29.10: MEGU-Meet — Vulnerability Assessment × WAF Night — Найдёт ли инструмент эту уязвимость? Остановит ли её WAF?",
-    ev4: "26.10: 60-й семинар MBSD по безопасности",
-    ev5: "19.10: OWASP Saitama MTG #34",
-    ev6: "10–11.10: Gikusai 2026 [осень]",
-    ev7: "4.10: «WOLF VILLAGE NIGHT #1 — блиц-доклады и общение»",
-    ev8: "2.10: однодневная подработка в качестве вспомогательного персонала на обучении по безопасности в компании-вендоре",
-    ev9: "29.09: NFLabs. Purple Flair Workshop #4 (только для студентов)",
-    ev10: "8.09: Основы оценки безопасности с помощью ИИ и ИИ-агентов",
-    ev11: "5.09: Hiyokomame Kyoshujo #10 — специальный выпуск к 2-летию в Токио",
-    ev12: "29.08: Новички в безопасности приветствуются! ИИ × безопасность #3",
-    ev13: "28.08: 59-й семинар MBSD по безопасности",
-    ev14: "23.08: 2-й семинар по безопасности «Ёваёва»",
-    ev15: "22.08: Мини-конференция Giku Project",
-    ev16: "14.07: 58-й семинар MBSD по безопасности",
-
-    cat_cert: "Квалификации",
-    cert1: "Сдан экзамен по управлению информационной безопасностью (Information Security Management Examination)",
-
-    y2025: "2025 г. (2-й курс)",
-    y25_1: "Экзамен EIKEN уровня Pre-1 (не сдан)",
-    y25_2: "Экзамен Fundamental Information Technology Engineer (не сдан)",
-    y25_3: "Экзамен по немецкому языку, 3-й уровень (не сдан)",
-    y25_4: "Экзамен по управлению информационной безопасностью (не сдан)",
-    y25_5: "Подработка в Daiso (до декабря)",
-
-    y2024: "2024 г. (1-й курс)",
-    y24_1: "Тест TOEIC IP — 550 баллов",
-    y24_2: "Сдан экзамен IT Passport",
-    y24_3: "Сдан экзамен по немецкому языку, 5-й уровень",
-    y24_4: "Сдан EIKEN, 2-й уровень",
-    y24_5: "Сдан EIKEN, уровень Pre-2",
-    y24_6: "Подработка в Daiso",
-
-    contact_title: "Контакты",
-    contact_text: "Вопросы, идеи для совместных проектов или просто отзывы — всё приветствуется.<br />Пишите мне в любой из аккаунтов ниже.",
-    sns_x: "X (Twitter) ← здесь я публикую свою деятельность.",
-    sns_note: "note ← здесь я публикую технические блоги и не только.",
-    sns_github: "GitHub ← здесь я публикую свои программы."
-  }
-};
-
-
-const i18nNodes = document.querySelectorAll("[data-i18n]");
-i18nNodes.forEach((el) => { el.dataset.ja = el.innerHTML; });
-
-const jaTitle = document.title;
-const metaDesc = document.querySelector('meta[name="description"]');
-const jaDescription = metaDesc.getAttribute("content");
-const langButtons = document.querySelectorAll(".lang-btn");
-
-function setLang(lang) {
-  if (lang !== "ja" && !translations[lang]) lang = "ja";
-  const dict = translations[lang] || {};
-
-  i18nNodes.forEach((el) => {
-    const text = lang === "ja" ? el.dataset.ja : dict[el.dataset.i18n];
-    el.innerHTML = text !== undefined ? text : el.dataset.ja;
-  });
-
-  document.documentElement.lang = lang;
-  document.title = lang === "ja" ? jaTitle : dict.meta_title;
-  metaDesc.setAttribute("content", lang === "ja" ? jaDescription : dict.meta_description);
-
-  langButtons.forEach((btn) => {
-    btn.classList.toggle("is-active", btn.dataset.lang === lang);
-  });
-
-  try { localStorage.setItem("lang", lang); } catch (e) { /* 保存できなくても動く */ }
-}
-
-langButtons.forEach((btn) => {
-  btn.addEventListener("click", () => setLang(btn.dataset.lang));
-});
-
-let savedLang = "ja";
-try { savedLang = localStorage.getItem("lang") || "ja"; } catch (e) {}
-if (savedLang !== "ja") setLang(savedLang);
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
